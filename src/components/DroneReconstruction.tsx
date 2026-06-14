@@ -45,10 +45,10 @@ export default function DroneReconstruction({ lang }: DroneReconstructionProps) 
         </div>
 
         {/* View Selection Controls */}
-        <div className="flex bg-slate-100 border border-slate-200/80 p-1.5 rounded-2xl self-start md:self-auto shrink-0 font-mono text-xs">
+        <div className="flex overflow-x-auto max-w-full scrollbar-none bg-slate-100 border border-slate-200/80 p-1.5 rounded-2xl self-start md:self-auto shrink-0 font-mono text-xs gap-1">
           <button
             onClick={() => setActiveTab('drone')}
-            className={`px-4 py-2 rounded-xl transition-all font-bold flex items-center gap-1.5 cursor-pointer ${
+            className={`px-3 sm:px-4 py-2 rounded-xl transition-all font-bold flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0 ${
               activeTab === 'drone' ? 'bg-brand-blue text-white shadow-md' : 'text-slate-600 hover:text-slate-900'
             }`}
           >
@@ -57,7 +57,7 @@ export default function DroneReconstruction({ lang }: DroneReconstructionProps) 
           </button>
           <button
             onClick={() => setActiveTab('lidar')}
-            className={`px-4 py-2 rounded-xl transition-all font-bold flex items-center gap-1.5 cursor-pointer ${
+            className={`px-3 sm:px-4 py-2 rounded-xl transition-all font-bold flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0 ${
               activeTab === 'lidar' ? 'bg-brand-blue text-white shadow-md' : 'text-slate-600 hover:text-slate-900'
             }`}
           >
@@ -66,7 +66,7 @@ export default function DroneReconstruction({ lang }: DroneReconstructionProps) 
           </button>
           <button
             onClick={() => setActiveTab('reflectivity')}
-            className={`px-4 py-2 rounded-xl transition-all font-bold flex items-center gap-1.5 cursor-pointer ${
+            className={`px-3 sm:px-4 py-2 rounded-xl transition-all font-bold flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0 ${
               activeTab === 'reflectivity' ? 'bg-brand-blue text-white shadow-md' : 'text-slate-600 hover:text-slate-900'
             }`}
           >
@@ -251,7 +251,9 @@ export default function DroneReconstruction({ lang }: DroneReconstructionProps) 
                     </span>
 
                     {/* Popover */}
-                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 translate-y-2 opacity-0 pointer-events-none group-hover/hotspot:opacity-100 group-hover/hotspot:translate-y-0 group-hover/hotspot:pointer-events-auto transition-all bg-slate-950/95 border border-slate-800 p-3 rounded-xl shadow-2xl min-w-[200px] z-50 text-left">
+                    <div className={`absolute bottom-6 translate-y-2 opacity-0 pointer-events-none group-hover/hotspot:opacity-100 group-hover/hotspot:translate-y-0 group-hover/hotspot:pointer-events-auto transition-all bg-slate-950/95 border border-slate-800 p-3 rounded-xl shadow-2xl min-w-[180px] sm:min-w-[220px] z-50 text-left ${
+                      idx === 3 ? 'right-0 translate-x-3 origin-bottom-right' : 'left-1/2 -translate-x-1/2'
+                    }`}>
                       <div className="text-xs font-bold text-white font-mono flex items-center gap-1">
                         <MapPin className="w-3.5 h-3.5 text-brand-gold" />
                         {pt.label}

@@ -48,18 +48,21 @@ export default function App() {
   };
 
   return (
-    <div className="bg-brand-bg text-slate-800 min-h-screen selection:bg-brand-blue selection:text-white hero-gradient font-sans">
+    <div className="bg-brand-bg text-slate-800 min-h-screen selection:bg-brand-blue selection:text-white hero-gradient font-sans overflow-x-hidden w-full relative">
       {/* Dynamic Navigation Sticky Bar */}
       <header className="sticky top-0 z-50 glass border-b border-slate-200/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-brand-blue flex items-center justify-center text-white shadow-lg shadow-indigo-500/20">
-              <span className="font-extrabold font-sans text-lg tracking-tight">C</span>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-2 sm:gap-4">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-brand-blue flex items-center justify-center text-white shadow-lg shadow-indigo-500/20 shrink-0">
+              <span className="font-extrabold font-sans text-sm sm:text-lg tracking-tight">C</span>
             </div>
             <div>
-              <span className="font-extrabold text-lg text-slate-900 tracking-tight font-sans block">Cârligele BESS</span>
-              <span className="text-[10px] text-brand-gold font-mono font-bold uppercase tracking-wider block">
+              <span className="font-extrabold text-sm sm:text-lg text-slate-900 tracking-tight font-sans block">Cârligele BESS</span>
+              <span className="text-[10px] text-brand-gold font-mono font-bold uppercase tracking-wider hidden sm:block">
                 {lang === 'tr' ? '€21M Onaylı Şebeke Bağlantısı' : lang === 'ro' ? 'Racord la Rețea Aprobat de €21M' : lang === 'ru' ? 'Одобренное техприсоединение на €21 млн' : '€21M Approved Grid Connection'}
+              </span>
+              <span className="text-[9px] text-brand-gold font-mono font-bold uppercase tracking-wider block sm:hidden">
+                {lang === 'tr' ? '€21M ATR' : lang === 'ro' ? '€21M ATR' : lang === 'ru' ? '€21M TCO' : '€21M ATR'}
               </span>
             </div>
           </div>
@@ -74,12 +77,12 @@ export default function App() {
           </nav>
 
           {/* Selector language tab switch */}
-          <div className="flex bg-slate-100 p-1 rounded-xl self-center border border-slate-200/80 font-mono text-xs">
+          <div className="flex bg-slate-100 p-0.5 sm:p-1 rounded-xl self-center border border-slate-200/80 font-mono text-[10px] sm:text-xs shrink-0">
             {(['tr', 'en', 'ro', 'ru'] as Language[]).map((el) => (
               <button
                 key={el}
                 onClick={() => handleLanguageChange(el)}
-                className={`px-3 py-1.5 rounded-lg font-bold transition-all text-center cursor-pointer ${
+                className={`px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg font-bold transition-all text-center cursor-pointer ${
                   lang === el ? 'bg-brand-blue text-white shadow-md font-black' : 'text-slate-600 hover:text-slate-900'
                 }`}
                 aria-label={`Switch language to ${el.toUpperCase()}`}

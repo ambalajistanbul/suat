@@ -36,8 +36,8 @@ export default function AtrSection({ lang }: AtrSectionProps) {
   return (
     <div className="glass rounded-3xl p-6 md:p-8 shadow-xl text-slate-700">
       {/* Tab select menu */}
-      <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-4 mb-6 pb-6 border-b border-slate-100">
-        <div className="flex bg-slate-100 border border-slate-200/80 p-1 rounded-2xl shrink-0 self-start sm:self-auto font-mono text-xs">
+      <div className="flex flex-col md:flex-row justify-between items-stretch md:items-center gap-4 mb-6 pb-6 border-b border-slate-100">
+        <div className="flex overflow-x-auto max-w-full scrollbar-none bg-slate-100 border border-slate-200/80 p-1 rounded-2xl shrink-0 font-mono text-xs gap-1">
           {ATR_DOCUMENTS.map((doc) => (
             <button
               key={doc.id}
@@ -45,7 +45,7 @@ export default function AtrSection({ lang }: AtrSectionProps) {
                 setActiveAtrId(doc.id);
                 setSearchQuery('');
               }}
-              className={`px-5 py-2.5 rounded-xl font-bold transition-all flex items-center gap-2 cursor-pointer ${
+              className={`px-4 py-2.5 rounded-xl font-bold transition-all flex items-center gap-2 cursor-pointer whitespace-nowrap shrink-0 ${
                 activeAtrId === doc.id ? 'bg-brand-blue text-white shadow-md' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
@@ -126,9 +126,9 @@ export default function AtrSection({ lang }: AtrSectionProps) {
               {filteredTable1.length > 0 ? (
                 <div className="space-y-2 font-mono text-xs">
                   {filteredTable1.map((item, idx) => (
-                    <div key={idx} className="flex justify-between items-center py-2 border-b border-slate-100 hover:bg-slate-50 px-2 rounded-lg transition-colors">
-                      <span className="text-slate-600 font-semibold">{item.key}</span>
-                      <span className="text-slate-900 font-bold text-right">{item.value}</span>
+                    <div key={idx} className="flex justify-between items-start py-2 border-b border-slate-100 hover:bg-slate-50 px-2 rounded-lg transition-colors gap-4">
+                      <span className="text-slate-600 font-semibold text-left leading-tight">{item.key}</span>
+                      <span className="text-slate-900 font-bold text-right shrink-0">{item.value}</span>
                     </div>
                   ))}
                 </div>
@@ -149,9 +149,9 @@ export default function AtrSection({ lang }: AtrSectionProps) {
               {filteredTable2.length > 0 ? (
                 <div className="space-y-2 font-mono text-xs">
                   {filteredTable2.map((item, idx) => (
-                    <div key={idx} className="flex justify-between items-center py-2 border-b border-slate-100 hover:bg-slate-50 px-2 rounded-lg transition-colors">
-                      <span className="text-slate-600 font-semibold">{item.key}</span>
-                      <span className="text-slate-900 font-bold text-right">{item.value}</span>
+                    <div key={idx} className="flex justify-between items-start py-2 border-b border-slate-100 hover:bg-slate-50 px-2 rounded-lg transition-colors gap-4">
+                      <span className="text-slate-600 font-semibold text-left leading-tight">{item.key}</span>
+                      <span className="text-slate-900 font-bold text-right shrink-0">{item.value}</span>
                     </div>
                   ))}
                 </div>
