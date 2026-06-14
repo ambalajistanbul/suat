@@ -1,0 +1,589 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import { TranslationSet, DeckSlide, AtrDocument, TimelineMilestone } from './types';
+
+export const TRANSLATIONS: Record<string, TranslationSet> = {
+  tr: {
+    title: "Cârligele BESS",
+    subtitle: "Romanya'da Yenilenebilir Enerji ve Enerji Depolama Fırsatı",
+    heroBadge: "READY-TO-BUILD · MART 2026",
+    heroTagline: "Doğu Avrupa'nın En Büyük Hibrit Depolama Portföyü",
+    heroDescription: "Vrancea bölgesinde yer alan, Transelectrica tarafından onaylı 2 × 150 MW BESS ve 25 MWp Solar hibridize enerji tesisi yatırımı. Toprak kullanımı güvence altına alınmış, ATR onayları tamamlanmış ve €21M onaylı şebeke bağlantısı ile doğrudan satılık yüksek gelirli altyapı varlığı.",
+    primaryAction: "Yatırım Teşvik Dosyasını İndir",
+    secondaryAction: "Resmi ATR Belgelerini İncele",
+    
+    navOverview: "Özet ve Görseller",
+    navDeck: "Proje Sunumu",
+    navSpecs: "Teknik ATR Verileri",
+    navCalculator: "ROI Hesaplayıcı",
+    navTimeline: "Yol Haritası",
+    navContact: "İletişim & Gizlilik Sözleşmesi",
+
+    slideOf: "Sunu Sayfası",
+    fieldSegment1: "Saha Segment 1",
+    fieldSegment2: "Saha Segment 2",
+    totalModules: "Toplam Panel Modülü",
+    capacityWp: "Hesaplanan Panel Gücü",
+    layoutCapacity: "Tesis Kurulu Yerleşimi",
+    updatedConnectionCost: "Onaylı Bağlantı Maliyeti",
+
+    financialTitle: "Bağlantı & Entegrasyon Bütçesi Detayları",
+    itemColumn: "İş Kalemi",
+    costColumn: "Tahmini Değer",
+    approxValue: "Yaklaşık Değer",
+    pcs: "Adet",
+    each: "Her biri",
+    connectionNote: "İlk çözüme kıyasla 110 kV seviyesinde bağlantı dönüşümü teknik olarak değerlendirilecektir. Şebeke güçlendirme masrafı (reinforcement) gerekmemektedir.",
+
+    permittingTitle: "Proje Durumu & Resmi İzin Dosyaları",
+    studiesTitle: "İrtifak & Etüt Çalışmaları",
+    stageStatusObtained: "Alındı / Tamamlandı",
+    stageStatusInProgress: "Devam Ediyor / İşlemde",
+    stageStatusDone: "Tamamlandı",
+    stageStatusOngoing: "İşlemde",
+    stageSource: "Kaynak",
+
+    droneVideoTitle: "Saha Tanıtımı & 3D Topografya Sunumu",
+    droneVideoSubtitle: "Sahanın kompakt coğrafyasını, anayol (DJ205C) bağlantısını ve LiDAR 3D yükseklik modellerini görselleştirin.",
+    droneViewTab: "Saha Drone Videosu",
+    lidarTab: "3D LiDAR Haritası",
+    reflectivityTab: "Güneş Emisivite Modeli",
+    overlayDJ205C: "Ana Yol DJ205C Bağlantısı",
+    overlayZoning: "31 Hektar İmar Sınırı",
+    overlayGridConnect: "Focșani Vest Trafo Merkezine Mesafe (1.500 m)",
+    reconstructionLoading: "3D LiDAR Canlandırma Modu Yükleniyor...",
+
+    calcTitle: "BESS Yatırım Getirisi & ROI Projeksiyonu",
+    calcDisclaimer: "Yatırım projeksiyonu; Gün Öncesi Piyasası (DAM) ticareti ve sistem dengeleme yardımcı hizmetleri baz alınarak hesaplanmıştır.",
+    calcBessPower: "BESS Gücü (MW)",
+    calcBessEnergy: "Enerji Depolama Kapasitesi (MWh)",
+    calcArbitrageSpread: "Tahmini Arbitraj Getirisi (€ / MWh)",
+    calcCycleFrequency: "Günlük Ortalama Çevrim (Cycle) Sayısı",
+    calcEsmRevenue: "Sistem Yardımcı Hizmetler Aylık Ek Bonusu",
+    calcPaybackPeriod: "Proje Amortisman (Payback) Süresi",
+    calcAnnualRevenue: "Yıllık Tahmini Brüt Gelir",
+    calcYears: "Yıl",
+    calcCapEx: "Tahmini Toplam Proje Yatırımı (EPC + BESS)",
+    calcYearlyOpEx: "Yıllık İşletme & Bakım Gideri (OpEx)",
+
+    contactTitle: "Resmi Yatırım Talebi ve İletişim Formu",
+    contactSubtitle: "Projenin ticari devri, hukuki dokümantasyon ve satın alma şartları için bizimle doğrudan iletişime geçin.",
+    contactHeaderForm: "Kurumsal Talep Formu",
+    contactFormName: "Adınız Soyadınız",
+    contactFormCompany: "Kurum / Fon Adı",
+    contactFormEmail: "E-Posta Adresiniz",
+    contactFormPhone: "Telefon Numaranız",
+    contactFormRole: "Kurumsal Rolünüz",
+    contactFormType: "İlgi Türü",
+    contactFormTypeAcquisition: "Tam Satın Alma / Devir",
+    contactFormTypeJV: "Ortak Yatırım & Partnerlik",
+    contactFormTypeBroker: "Aracı / Broker Sorgusu",
+    contactFormMessage: "Niyet Mektubu Özeti / Mesajınız",
+    contactFormNDA: "Gizlilik Sözleşmesi (NDA) İstiyorum",
+    contactFormNDAYes: "Evet, teknik projeyi incelemek üzere standart NDA sözleşmesini almak istiyorum",
+    contactFormSubmit: "Ciddi Alıcı Talebi Gönder",
+    contactFormSuccess: "Talebiniz başarıyla kaydedilmiştir. Yatırım yöneticimiz sizinle en kısa sürede doğrudan iletişime geçecektir.",
+    contactInfoTitle: "Finansal Aracılık & İletişim Bilgileri",
+    contactPhoneLabel: "Yatırım Direktörü Telefon",
+    contactEmailLabel: "Gizli Haberleşme E-Posta",
+    contactUrlLabel: "Web Adresi",
+    contactTelegramLabel: "Telegram Doğrudan İletişim",
+    contactCredibilityText: "Bu web portalında yer alan tüm bilgiler, Transelectrica ve ANRE tarafından Electricspark SRL ve Hellios Brenpro SRL adına düzenlenen resmi ATR izinlerine dayanmaktadır. Ciddi yatırımcılar ve fonlar için her iki SPV'nin (Özel Amaçlı Şirket) tüm hisse devri belgeleri, imar sözleşmeleri ve Transelectrica harç makbuzları hazırdır."
+  },
+  en: {
+    title: "Cârligele BESS",
+    subtitle: "Renewable Energy and Battery Storage Opportunity in Romania",
+    heroBadge: "READY-TO-BUILD · MARCH 2026",
+    heroTagline: "Eastern Europe's Leading Hybrid BESS Portfolio",
+    heroDescription: "A hybridized energy asset consisting of 2 × 150 MW BESS and 25 MWp Solar in Vrancea County, Romania. Secured land rights, approved ATR technical connection grid permits from Transelectrica, and a €21M grid connection. Premium asset for direct acquisition.",
+    primaryAction: "Download Investor Teaser",
+    secondaryAction: "View Official ATR Technical Permits",
+    
+    navOverview: "Overview & Media",
+    navDeck: "Pitch Presentation",
+    navSpecs: "Technical ATR Data",
+    navCalculator: "ROI Calculator",
+    navTimeline: "Timeline",
+    navContact: "NDA & Contact",
+
+    slideOf: "Slide Page",
+    fieldSegment1: "Field Segment 1",
+    fieldSegment2: "Field Segment 2",
+    totalModules: "Total Solar Modules",
+    capacityWp: "Calculated Peak Capacity",
+    layoutCapacity: "Plant Config Layout",
+    updatedConnectionCost: "Approved Connection Tariff",
+
+    financialTitle: "Grid Connection & Substation Budget Breakdown",
+    itemColumn: "Workstream Item",
+    costColumn: "Estimated Value",
+    approxValue: "Estimated Value",
+    pcs: "pcs",
+    each: "Each",
+    connectionNote: "Following technical optimization, a 110 kV conversion option will be evaluated. No system grid reinforcement is required by the operator.",
+
+    permittingTitle: "Project Status & Permitting Dossier",
+    studiesTitle: "Key Surveys & Site Easements",
+    stageStatusObtained: "Obtained / Done",
+    stageStatusInProgress: "In progress / Pending",
+    stageStatusDone: "Done",
+    stageStatusOngoing: "In progress",
+    stageSource: "Source",
+
+    droneVideoTitle: "Site Presentation & 3D Topographical Survey",
+    droneVideoSubtitle: "Explore the highly compact geography of the site, access from main road DJ205C, and LiDAR 3D elevation maps.",
+    droneViewTab: "Drone Flight Video",
+    lidarTab: "3D LiDAR Elevation Map",
+    reflectivityTab: "Solar Emissivity Model",
+    overlayDJ205C: "Main Road DJ205C Access",
+    overlayZoning: "31-Hectare Boundary",
+    overlayGridConnect: "Focșani Vest Distance (1,500 m)",
+    reconstructionLoading: "Analyzing 3D LiDAR Reconstruction...",
+
+    calcTitle: "BESS Arbitrage & Financial ROI Projections",
+    calcDisclaimer: "Investment returns are estimated based on Day-Ahead Market (DAM) arbitrage and grid balancing ancillary services.",
+    calcBessPower: "BESS Active Power (MW)",
+    calcBessEnergy: "Battery Energy Storage (MWh)",
+    calcArbitrageSpread: "Est. Arbitrage Average Spread (€ / MWh)",
+    calcCycleFrequency: "Average Daily Charging Cycles",
+    calcEsmRevenue: "Grid Ancillary Monthly Performance Bonus (€)",
+    calcPaybackPeriod: "Amortization / Payback Period",
+    calcAnnualRevenue: "Est. Annual Gross Revenue",
+    calcYears: "Years",
+    calcCapEx: "Est. Total CAPEX (EPC + BESS)",
+    calcYearlyOpEx: "Est. Yearly Maintenance OpEx (€)",
+
+    contactTitle: "Formal Request for Information & RFP",
+    contactSubtitle: "Connect directly with our investment directors for SPV acquisition documents and financial terms.",
+    contactHeaderForm: "Institutional Inquiry Form",
+    contactFormName: "Full Name",
+    contactFormCompany: "Institution / Fund Name",
+    contactFormEmail: "Institutional E-Mail",
+    contactFormPhone: "Phone Line Number",
+    contactFormRole: "Corporate Position",
+    contactFormType: "Inquiry Intent",
+    contactFormTypeAcquisition: "Outright Acquisition / Share Sale",
+    contactFormTypeJV: "Co-Investment / Joint Venture",
+    contactFormTypeBroker: "Intermediary / Broker Request",
+    contactFormMessage: "Summary of Intent / Message",
+    contactFormNDA: "NDA Request Checked",
+    contactFormNDAYes: "Yes, I request the standard NDA to unlock both projects' technical dossiers",
+    contactFormSubmit: "Submit Formal Inquiry",
+    contactFormSuccess: "Your RFP has been registered successfully. Our corporate finance lead will contact you directly.",
+    contactInfoTitle: "Structured Finance & Deal Operations",
+    contactPhoneLabel: "Deal Lead Direct Route",
+    contactEmailLabel: "Secure Inbox E-mail",
+    contactUrlLabel: "Corporate Site",
+    contactTelegramLabel: "Telegram Secure Instant Handle",
+    contactCredibilityText: "All parameters represented herein are sourced from official ATR permits issued by Transelectrica SA in Q4 2025 to Electricspark SRL & Hellios Brenpro SRL. For vetted investment institutions, a secure virtual data room (VDR) is open containing full notary deed records, topographical blueprints, and ANRE authorizations."
+  },
+  ro: {
+    title: "Cârligele BESS",
+    subtitle: "Oportunitate de Energie Regenerabilă și Stocare de Energie în România",
+    heroBadge: "PREGĂTIT PENTRU CONSTRUCȚIE · MARTIE 2026",
+    heroTagline: "Cel mai Mare Portofoliu de Stocare Hibridă din Europa de Est",
+    heroDescription: "Oportunitate de investiție hibridă premium alcătuită din BESS 2 × 150 MW și 25 MWp Solar în județul Vrancea, România. Teren asigurat, ATR-uri aprobate recent de Transelectrica și un racord cu valoarea de €21M pentru achiziție directă.",
+    primaryAction: "Descarcă Teaser-ul pentru Investitori",
+    secondaryAction: "Vizualizează Avizul Tehnic de Racordare (ATR)",
+    
+    navOverview: "Vedere de ansamblu și Media",
+    navDeck: "Prezentare Proiect",
+    navSpecs: "Date Tehnice ATR",
+    navCalculator: "Calculator ROI",
+    navTimeline: "Calendar Proiect",
+    navContact: "NDA și Contact",
+
+    slideOf: "Pagina de Prezentare",
+    fieldSegment1: "Segment Teren 1",
+    fieldSegment2: "Segment Teren 2",
+    totalModules: "Total Module Fotovoltaice",
+    capacityWp: "Capacitate de Vârf Calculată",
+    layoutCapacity: "Aranjamentul Centralei",
+    updatedConnectionCost: "Tariful de Racordare Aprobat",
+
+    financialTitle: "Detaliile Bugetului de Racordare și Integrare",
+    itemColumn: "Element Activitate",
+    costColumn: "Valoare Estimată",
+    approxValue: "Valoare Estimată",
+    pcs: "buc.",
+    each: "Fiecare",
+    connectionNote: "Din punct de vedere tehnic, va fi analizat un racord de 110 kV în loc de circuite multiple de 35 kV. Nu sunt necesare lucrări de întărire superioară de rețea.",
+
+    permittingTitle: "Stadiul Proiectului și Avize Obținute",
+    studiesTitle: "Studii și Servituți Teren",
+    stageStatusObtained: "Obținut / Finalizat",
+    stageStatusInProgress: "În curs de obținere",
+    stageStatusDone: "Finalizat",
+    stageStatusOngoing: "În curs",
+    stageSource: "Sursa",
+
+    droneVideoTitle: "Prezentare Sit și Studiu Topografic 3D",
+    droneVideoSubtitle: "Vizualizați topografia compactă a terenului, conexiunea directă cu drumul județean DJ205C și modelele de altitudine din LiDAR.",
+    droneViewTab: "Video Zbor Dronă",
+    lidarTab: "Hartă Altitudine 3D LiDAR",
+    reflectivityTab: "Model de Emisivitate Solară",
+    overlayDJ205C: "Acces Drum Județean DJ205C",
+    overlayZoning: "Limita Terenului - 31 Hectare",
+    overlayGridConnect: "Distanța până la Stația Focșani Vest (1.500 m)",
+    reconstructionLoading: "Se încarcă reconstrucția 3D LiDAR...",
+
+    calcTitle: "Arbitraj BESS și Rentabilitatea Investiției (ROI)",
+    calcDisclaimer: "Proiecțiile financiare sunt calculate pe baza arbitrajului de preț de pe Piața pentru Ziua Următoare (PZU) și a serviciilor de sistem de echilibrare.",
+    calcBessPower: "Putere Activă BESS (MW)",
+    calcBessEnergy: "Capacitate Stocare Baterii (MWh)",
+    calcArbitrageSpread: "Diferența de Preț Arbitraj Est. (€ / MWh)",
+    calcCycleFrequency: "Număr Mediu Zilnic de Cicluri",
+    calcEsmRevenue: "Bonus Lunar Servicii de Sistem de Echilibrare (€)",
+    calcPaybackPeriod: "Perioada de Amortizare a Investiției",
+    calcAnnualRevenue: "Venit Anual Brut Estimat",
+    calcYears: "Ani",
+    calcCapEx: "Total Investiție CAPEX Estimat (EPC + BESS)",
+    calcYearlyOpEx: "Cost Operațional Anual OpEx Est. (€)",
+
+    contactTitle: "Solicitare Formală de Informații",
+    contactSubtitle: "Contactați echipa noastră de investment banking pentru acces la asociați și tranzacționarea acțiunilor SPV-ului.",
+    contactHeaderForm: "Formular Instituțional de Contact",
+    contactFormName: "Nume Complet",
+    contactFormCompany: "Nume Companie / Fond",
+    contactFormEmail: "E-mail Instituțional",
+    contactFormPhone: "Număr de Telefon",
+    contactFormRole: "Rol în Companie",
+    contactFormType: "Tipul Solicitării",
+    contactFormTypeAcquisition: "Achiziție Integrală / Share Deal",
+    contactFormTypeJV: "Co-Investiție / Joint Venture",
+    contactFormTypeBroker: "Sondaj Intermediar / Broker",
+    contactFormMessage: "Rezumat Condiții / Mesaj",
+    contactFormNDA: "Solicitare Acord Confidențialitate",
+    contactFormNDAYes: "Da, doresc semnarea acordului standard NDA pentru a accesa dosarele tehnice",
+    contactFormSubmit: "Trimite Solicitarea Formală",
+    contactFormSuccess: "Solicitarea dumneavoastră a fost înregistrată cu succes. Coordonatorul de tranzacții vă va contacta direct.",
+    contactInfoTitle: "Informații Financiare Securizate",
+    contactPhoneLabel: "Număr Direct Director Tranzacții",
+    contactEmailLabel: "E-mail Oficial Securizat",
+    contactUrlLabel: "Site-ul Companiei",
+    contactTelegramLabel: "Telegram Contact Rapid Securizat",
+    contactCredibilityText: "Toate datele publicate pe acest portal provin din Avizele Tehnice de Racordare oficiale emise de Transelectrica SA în octombrie 2025 pentru Electricspark SRL și Hellios Brenpro SRL. Actele societăților, contractele de superficie pe 49 de ani și dovezile tarifelor plătite sunt disponibile în format fizic și digital la sediul tranzacției."
+  },
+  ru: {
+    title: "Cârligele BESS",
+    subtitle: "Возможности в сфере возобновляемой энергетики и накопителей энергии",
+    heroBadge: "ГОТОВ К СТРОИТЕЛЬСТВУ · МАРТ 2026",
+    heroTagline: "Ведущий портфель гибридных накопителей в Восточной Европе",
+    heroDescription: "Уникальный гибридный энергетический комплекс BESS 2 × 150 МВт и 25 МВтp солнечной фотоэлектрической генерации в регионе Вранча, Румыния. Права на землю оформлены, получены официальные разрешения ATR от Transelectrica с согласованным объемом подключения на сумму €21 млн. Идеальный актив для приобретения.",
+    primaryAction: "Скачать инвестиционный тизер",
+    secondaryAction: "Просмотреть официальный документ ATR",
+    
+    navOverview: "Обзор и медиа",
+    navDeck: "Презентация проекта",
+    navSpecs: "Технические данные ATR",
+    navCalculator: "Калькулятор ROI",
+    navTimeline: "Календарный план",
+    navContact: "NDA и контакты",
+
+    slideOf: "Слайд презентации",
+    fieldSegment1: "Участок 1",
+    fieldSegment2: "Участок 2",
+    totalModules: "Всего фотоэлектрических модулей",
+    capacityWp: "Расчетная пиковая мощность",
+    layoutCapacity: "Параметры энергокомплекса",
+    updatedConnectionCost: "Одобренный тариф на подключение",
+
+    financialTitle: "Детали бюджета на подключение и инжиниринг",
+    itemColumn: "Рабочее направление / Задача",
+    costColumn: "Оценочная стоимость",
+    approxValue: "Оценка стоимости",
+    pcs: "шт.",
+    each: "каждый",
+    connectionNote: "В рамках оптимизации рассматривается преобразование распределения на уровень КЛ 110 кВ вместо цепей 35 кВ. Дополнительное усиление существующих сетей оператором не требуется.",
+
+    permittingTitle: "Статус проекта и выданные разрешения",
+    studiesTitle: "Изыскания и сервитуты участков",
+    stageStatusObtained: "Получено / Выполнено",
+    stageStatusInProgress: "В процессе оформления",
+    stageStatusDone: "Выполнено",
+    stageStatusOngoing: "В процессе",
+    stageSource: "Источник данных",
+
+    droneVideoTitle: "Презентация площадки и 3D-топография",
+    droneVideoSubtitle: "Визуализация компактной территории, прямого примыкания к главной дороге DJ205C и 3D-моделей рельефа на основе LiDAR.",
+    droneViewTab: "Видео с беспилотника",
+    lidarTab: "3D LiDAR карта высот",
+    reflectivityTab: "Модель инсоляции участка",
+    overlayDJ205C: "Транспортная доступность DJ205C",
+    overlayZoning: "Истинная граница 31 Га",
+    overlayGridConnect: "Расстояние до подстанции Фокшаны Вест (1 500 м)",
+    reconstructionLoading: "Генерация 3D LiDAR модели рельефа...",
+
+    calcTitle: "Расчет доходности накопителей (BESS) и ROI",
+    calcDisclaimer: "Расчет доходности основан на разнице цен на рынке на сутки вперед (DAM/PZU) и тарифах балансирующих вспомогательных услуг сети.",
+    calcBessPower: "Активная мощность BESS (МВт)",
+    calcBessEnergy: "Емкость накопителей LFP (МВт·ч)",
+    calcArbitrageSpread: "Спред коммерческого арбитража (€ / МВт·ч)",
+    calcCycleFrequency: "Среднее число циклов заряда/разряда в сутки",
+    calcEsmRevenue: "Ежемесячный бонус за системные услуги сети (€)",
+    calcPaybackPeriod: "Срок окупаемости инвестиций",
+    calcAnnualRevenue: "Оценочная годовая валовая выручка",
+    calcYears: "Лет",
+    calcCapEx: "Суммарный CAPEX (проектирование, закупки, BESS)",
+    calcYearlyOpEx: "Ежегодные операционные расходы OpEx (€)",
+
+    contactTitle: "Официальный инвестиционный запрос",
+    contactSubtitle: "Свяжитесь напрямую с кураторами сделки для получения учредительных и правовых документов SPV-компаний.",
+    contactHeaderForm: "Институциональная форма запроса",
+    contactFormName: "Ваше имя и фамилия",
+    contactFormCompany: "Название фонда / Организации",
+    contactFormEmail: "Электронная почта организации",
+    contactFormPhone: "Номер телефона для связи",
+    contactFormRole: "Должность в компании",
+    contactFormType: "Цель обращения",
+    contactFormTypeAcquisition: "Прямой выкуп / Смена акционеров",
+    contactFormTypeJV: "Совместное предприятие / Партнерство",
+    contactFormTypeBroker: "Запрос от брокера / Посредника",
+    contactFormMessage: "Краткое изложение намерений / Сообщение",
+    contactFormNDA: "Запрос Соглашения о неразглашении",
+    contactFormNDAYes: "Да, я запрашиваю стандартную форму NDA для открытия технического досье проекта",
+    contactFormSubmit: "Отправить инвестиционный запрос",
+    contactFormSuccess: "Инвестиционный запрос зарегистрирован. Консультант по сделкам свяжется с вами в ближайшее время.",
+    contactInfoTitle: "Конфиденциальные каналы связи",
+    contactPhoneLabel: "Телефон директора по инвестициям",
+    contactEmailLabel: "Защищенный E-mail для связи",
+    contactUrlLabel: "Сайт компании",
+    contactTelegramLabel: "Защищенный мессенджер Telegram",
+    contactCredibilityText: "Все финансово-технические параметры, указанные на данном ресурсе, основаны на оригинальных условиях технического присоединения (ATR), выданных Transelectrica в Q4 2025 для компаний Electricspark SRL и Hellios Brenpro SRL. Все документы права пользования участками на срок до 49 лет готовы к проведению процедуры due diligence."
+  }
+};
+
+export const DECK_SLIDES: DeckSlide[] = [
+  {
+    id: 1,
+    image: "https://0d21581f-6e20-4d4b-996b-c1ebc4c45dc2.lovableproject.com/__l5e/assets-v1/62d4fa24-a059-4118-88a6-a73822daa82c/carligele-hero.jpg",
+    tr: {
+      title: "CÂRLIGELE · VRANCEA",
+      subtitle: "Yenilenebilir Enerji Yatırım Fırsatı",
+      paragraphs: [
+        "Ekim 2025 Onaylı Hibrit Enerji Santrali · BESS 2 × 150 MW",
+        "Sahanın bütünü elektrik iletim şebekesi, AC/DC invertör altyapısı, güneş (PV) modülleri ve gelişmiş lityum demir fosfat (LFP) bataryalardan meydana gelecektir.",
+        "BESS 2 × 150 MW kapasitesi; ulusal iletim sistemi operatörüne (Transelectrica) sistem dengeleme yardımcı hizmetleri sunulmasında ve pik saatlerde Gün Öncesi Piyasası (DAM) enerji arbitraj ticaretinde yüksek döviz kazancı üretmek amacıyla tasarlanmıştır."
+      ]
+    },
+    en: {
+      title: "CÂRLIGELE · VRANCEA",
+      subtitle: "Renewable Energy Portfolio Opportunity",
+      paragraphs: [
+        "October 2025 Approved Hybrid Power Plant · BESS 2 × 150 MW",
+        "The integrated project consists of electric grid infrastructure, AC/DC heavy-duty inverter structures, high-efficiency solar (PV) and lithium iron phosphate (LFP) utility batteries.",
+        "BESS 2 × 150 MW capacity will operate in the day-ahead arbitrage markets of South-Eastern Europe and provide auxiliary system frequency services directly to the national transmission system operator (Transelectrica)."
+      ]
+    },
+    ro: {
+      title: "CÂRLIGELE · VRANCEA",
+      subtitle: "Oportunitate de Investiție în Energie",
+      paragraphs: [
+        "Centrală Hibridă Aprobată în Octombrie 2025 · BESS 2 × 150 MW",
+        "Ansamblul include racordul la rețeaua națională, invertoare de mare performanță, panouri solare (PV) și baterii industriale durabile pe bază de litiu fier fosfat (LFP).",
+        "BESS 2 × 150 MW este dedicată furnizării de servicii tehnologice de sistem destinate operatorului național de transport (Transelectrica) și tranzacționării de arbitraj pe Piața de Ziua Următoare."
+      ]
+    },
+    ru: {
+      title: "CÂRLIGELE · ВРАНЧА",
+      subtitle: "Проект возобновляемой энергетики повышенной надежности",
+      paragraphs: [
+        "Одобренный в октябре 2025 года гибридный комплекс · BESS 2 × 150 МВт",
+        "Проект включает в себя распределительное устройство, промышленные инверторы AC/DC, фотоэлектрическую солнечную генерацию и долговечные батареи LFP глубокого цикла заряда/разряда.",
+        "Накопитель BESS 2 × 150 МВт будет поставлять высокодоходные услуги поддержания частоты оператору Transelectrica, а также торговать энергией на рынке DAM в пиковые часы."
+      ]
+    }
+  },
+  {
+    id: 2,
+    image: "https://0d21581f-6e20-4d4b-996b-c1ebc4c45dc2.lovableproject.com/__l5e/assets-v1/1c5058f2-c4eb-4292-be39-d6a765592e2d/carligele-map.jpg",
+    tr: {
+      title: "Saha Coğrafyası & Fizibilitesi",
+      subtitle: "Mükemmel Işınım Değerleri ve Lojistik Bağlantısı",
+      paragraphs: [
+        "Proje arazisi, Vrancea bölgesinde yer alan, toplamda 31 hektar (15 + 16 ha) kompakt yüzey ölçümüne sahip düzgün yapılı ve yerel yönetime ait arazidir. 49 yıllık irtifak ve üst hakkı güvenceye alınmıştır ve yıllık kiralama bedeli 2.000 €/ha seviyesindedir.",
+        "Sahanın panel kapasitesi fizibiliye göre segmentlere ayrılmıştır:"
+      ],
+      bullets: [
+        "Saha Segment 1: 21.224 fotovoltaik modül",
+        "Saha Segment 2: 20.440 fotovoltaik modül",
+        "Toplam: 41.664 panel modülü · 27.081,6 kWp kurulu güneş elektrik gücü",
+        "Tesis Yerleşim Şeması: 2 × 150 MW BESS + 25 MW PV entegrasyonu; Transelectrica Vest fider bağlantısı"
+      ]
+    },
+    en: {
+      title: "Site Geography & Logistics",
+      subtitle: "Optimal Solar Yield & Superb Transport Connectivity",
+      paragraphs: [
+        "The project layout combines 31 hectares (15 + 16 ha) of compact, flat land leased directly from the local municipality on a secure 49-year contract with a low annual lease of €2,000/ha.",
+        "The solar module spacing allows high power density across two distinct sub-fields:"
+      ],
+      bullets: [
+        "Field Segment 1: 21,224 industrial monocrystalline PV modules",
+        "Field Segment 2: 20,440 industrial monocrystalline PV modules",
+        "Portfolio Sum: 41,664 modules producing 27,081.6 kWp total solar backup",
+        "Total Layout: 2 × 150 MW BESS + 25 MW PV hybrid system directly interfacing the 220kV grid"
+      ]
+    },
+    ro: {
+      title: "Geografia Sitului și Logistica",
+      subtitle: "Iliație Solară Excelentă și Conexiuni de Transport Rapide",
+      paragraphs: [
+        "Terenul compact de 31 de hectare (15 + 16 ha) este securizat prin contract de superficie de lungă durată pe 49 de ani încheiat cu consiliul local. Taxa anuală fixă este de numai 2.000 €/hectar.",
+        "Modulul fotovoltaic este optimizat pentru a maximiza puterea:"
+      ],
+      bullets: [
+        "Segment Teren 1: 21.224 module fotovoltaice premium",
+        "Segment Teren 2: 20.440 module fotovoltaice premium",
+        "Capacitate Totală: 41.664 module realizând 27.081,6 kWp generator fotovoltaic",
+        "Schema Amplasamentului: 2 × 150 MW BESS + 25 MW PV conectat la Transelectrica"
+      ]
+    },
+    ru: {
+      title: "География и логистика участка",
+      subtitle: "Стабильная инсоляция и прямое примыкание к дорожным сетям",
+      paragraphs: [
+        "Ровный, компактный участок площадью 31 га (15 + 16 га), находящийся в муниципальной собственности, арендован на 49 лет по выгодной ставке €2 000/га в год.",
+        "Для оптимизации выработки генерация разделена на две части:"
+      ],
+      bullets: [
+        "Сегмент участка 1: 21 224 промышленных монокристаллических PV модуля",
+        "Сегмент участка 2: 20 440 промышленных монокристаллических PV модуля",
+        "Свод по фотовольтаике: 41 664 солнечных панелей пиковой солнечной мощностью 27 081,6 кВтп",
+        "Компоновка: 2 × 150 МВт BESS + 25 МВт PV с сопряжением с подстанцией 220 кВ"
+      ]
+    }
+  },
+  {
+    id: 3,
+    image: "https://0d21581f-6e20-4d4b-996b-c1ebc4c45dc2.lovableproject.com/__l5e/assets-v1/2d3d2a9e-70bf-4ede-a930-72920d70a697/carligele-grid.jpg",
+    tr: {
+      title: "Onaylanmış Şebeke Bağlantısı",
+      subtitle: "Resmi ATR Prosedürü & Garantili İletim Kapasitesi",
+      paragraphs: [
+        "Her iki depolama tesisi için Transelectrica SA tarafından onaylanan kalıcı bağlantı çözümü 21.10.2025 tarihinde yürürlüğe girmiştir. Focșani Vest 220/110 kV istasyonunun 220 kV barasında tahliye edilecektir.",
+        "Onaylanan resmi bağlantı kapasitesi 2 × 150 MW / 300 MWh seviyesindedir. Toplam tahmini fider, trafo merkezi, ölçüm ve çift ray uzatım maliyeti €21 Milyon olarak netleştirilmiştir."
+      ]
+    },
+    en: {
+      title: "Approved Grid Connection Solution",
+      subtitle: "Transelectrica Official ATR and Secure Grid Injection",
+      paragraphs: [
+        "Both battery units are backed by an official technical grid permit (ATR) signed on 21.10.2025 by Transelectrica SA. Power injection goes directly into the 220 kV busbar at Focșani Vest substation.",
+        "Approved permanent connection capacity for the two SPVs is 2 × 150 MW / 300 MWh. Complete layout extension including user-equipped substation and GSU transformers is budgeted at €21 Million."
+      ]
+    },
+    ro: {
+      title: "Soluție de Racordare Aprobată oficial",
+      subtitle: "Aviz Tehnic de Racordare (ATR) emis de Transelectrica SA",
+      paragraphs: [
+        "Instalațiile de stocare beneficiază de racordare pe termen lung asigurată prin ATR semnat la data de 21.10.2025 de Transelectrica SA. Punctul de conectare este bara de 220 kV din stația Focșani Vest.",
+        "Kapacitatea aprobată de rețea este de 2 × 150 MW / 300 MWh. Costul total estimat de racordare incluzând extinderea stației, GSU și celelalte celule este de 21 milioane €."
+      ]
+    },
+    ru: {
+      title: "Одобренное решение подключения",
+      subtitle: "Официальные техусловия (ATR) и гарантированное резервирование мощности",
+      paragraphs: [
+        "Обе аккумуляторные станции обеспечены постоянными техническими условиями на подключение (ATR) от 21.10.2025, подписанными госкомпанией Transelectrica SA. Присоединение выполняется к шине 220 кВ ПС Фокшаны-Вест.",
+        "Согласовано постоянное подключение 2 × 150 МВт / 300 МВт·ч. Бюджет расширения ячеек, монтажа подстанции и повышающих трансформаторов GSU оценен в €21 млн."
+      ]
+    }
+  }
+];
+
+export const ATR_DOCUMENTS: AtrDocument[] = [
+  {
+    id: "carligele1",
+    title: "ATR Cârligele 1 (No. 155)",
+    regDate: "21.10.2025",
+    applicant: "ELECTRICSPARK SRL (J2013000068396 / CIF 31167069)",
+    piPower: "150,000 kW (150 MW)",
+    storedEnergy: "309,600 kWh (309.6 MWh)",
+    tables: {
+      table1: [
+        { key: "Tip IS (Battery Type)", value: "LFP (Lithium Iron Phosphate)" },
+        { key: "Pi IS (Installed Power)", value: "150,000 kW" },
+        { key: "Pmax evac IS (Max Evac)", value: "142,100 kW" },
+        { key: "Pmax abs IS (Max Abs)", value: "157,900 kW" },
+        { key: "Total Max Capacity (Ah)", value: "287,946.5 Ah" },
+        { key: "Total Stored Energy", value: "309,600 kWh" }
+      ],
+      table2: [
+        { key: "No. of Inverters", value: "900 pcs (EH-0200-HA-M)" },
+        { key: "Inverter AC Voltage", value: "0.69 kV" },
+        { key: "Inverter Installed Power", value: "200 kW (Total: 198,000 kW)" },
+        { key: "Internal Services Size", value: "400 kW" },
+        { key: "GSU Transformer", value: "200 MVA, 35/220 kV" },
+        { key: "Measurement Class", value: "Class A (SR EN 61000-3-40)" }
+      ]
+    },
+    pages: 16
+  },
+  {
+    id: "carligele2",
+    title: "ATR Cârligele 2 (No. 156)",
+    regDate: "21.10.2024",
+    applicant: "HELLIOS BRENPRO SRL (J39/884/2022 / CIF 30662220)",
+    piPower: "150,000 kW (150 MW)",
+    storedEnergy: "309,600 kWh (309.6 MWh)",
+    tables: {
+      table1: [
+        { key: "Tip IS (Battery Type)", value: "LFP (Lithium Iron Phosphate)" },
+        { key: "Pi IS (Installed Power)", value: "150,000 kW" },
+        { key: "Pmax evac IS (Max Evac)", value: "142,100 kW" },
+        { key: "Pmax abs IS (Max Abs)", value: "157,900 kW" },
+        { key: "Total Max Capacity (Ah)", value: "287,946.5 Ah" },
+        { key: "Total Stored Energy", value: "309,600 kWh" }
+      ],
+      table2: [
+        { key: "No. of Inverters", value: "900 pcs (EH-0200-HA-M)" },
+        { key: "Inverter AC Voltage", value: "0.69 kV" },
+        { key: "Inverter Installed Power", value: "200 kW (Total: 198,000 kW)" },
+        { key: "Internal Services Size", value: "400 kW" },
+        { key: "GSU Transformer", value: "200 MVA, 35/220 kV" },
+        { key: "Measurement Class", value: "Class A (SR EN 61000-3-40)" }
+      ]
+    },
+    pages: 16
+  }
+];
+
+export const TIMELINE_MILIEUS: TimelineMilestone[] = [
+  {
+    phase: "01",
+    dates: "2023 - 2024",
+    tr: { title: "Arazi & Çatı İzinleri", desc: "Yerel belediyeden 49 yıllık kiralama hakkının ve superficesinin tamamlanarak tescil edilmesi." },
+    en: { title: "Land Rights & Surface Deeds", desc: "49-year lease contract with local municipality registered and secured in national notary system." },
+    ro: { title: "Securizare Teren & Superficie", desc: "Superficie pe 49 de ani încheiată cu consiliul local, înregistrată complet în Cartea Funciară." },
+    ru: { title: "Оформление земли и сервитутов", desc: "Подписание и регистрация нотариального договора аренды земельного участка на срок до 49 лет." }
+  },
+  {
+    phase: "02",
+    dates: "Oct 2024 / Oct 2025",
+    tr: { title: "Transelectrica ATR Onayları", desc: "Uzatmalı 220 kV fider ile 300 MW (2 × 150 MW) depolama ve enjeksiyon izninin devlete ait TSO tarafından verilmesi." },
+    en: { title: "Transelectrica ATR Issuance", desc: "Technical grid connection approval for 300 MW (2 × 150 MW) BESS and Solar issued by state utility." },
+    ro: { title: "Emitere ATR Transelectrica", desc: "Avizul Tehnic de Racordare emis oficial pentru 300 MW stocare la bara de 220 kV stația Focșani Vest." },
+    ru: { title: "Официальные ТУ (ATR) Transelectrica", desc: "Получение полных техусловий на 300 МВт выдачи и потребления мощности от государственного оператора." }
+  },
+  {
+    phase: "03",
+    dates: "Ongoing - Jan 2026",
+    tr: { title: "ÇED Raporu & Teknik Proje (DTAC)", desc: "Çevresel etki çalışmalarının ve teknik imar izin projesinin (DTAC) hazırlanıp teslim edilmesi." },
+    en: { title: "Environment & Design (DTAC)", desc: "Environment impact studies (EIA) and technical urbanism layout project submission." },
+    ro: { title: "Acord de Mediu și Proiect DTAC", desc: "Studiul de impact asupra mediului și depunerea documentației tehnice pentru autorizare de construire." },
+    ru: { title: "Проектирование и экологический отчет", desc: "Разработка детального технического проекта (DTAC) и экологического отчета ОВОС." }
+  },
+  {
+    phase: "04",
+    dates: "March 2026",
+    tr: { title: "İnşaat Ruhsatı & Ready-to-Build", desc: "Nihai inşaat ruhsatının alınmasıyla projenin 'Ready-To-Build' statüsüne geçmesi ve EPC sürecinin başlaması." },
+    en: { title: "Construction Permit & Ready-To-Build", desc: "Obtaining final construction authorization. Project fully transitioned to RTB status open for EPC." },
+    ro: { title: "Autorizație de Construire & RTB", desc: "Obținerea autorizației finale de construire. Proiectul devine oficial Ready-To-Build pregătit de EPC." },
+    ru: { title: "Разрешение на строительство & RTB", desc: "Получение разрешения на выполнение СМР. Полный переход проекта в статус 'Ready-to-Construct'." },
+    highlight: true
+  }
+];

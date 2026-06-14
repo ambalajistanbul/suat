@@ -1,0 +1,6 @@
+{
+  "name": "Cârligele BESS",
+  "description": "Premium Investment Pitch & Commercial Portal for Cârligele 300MW BESS and Solar Opportunity in Romania",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
