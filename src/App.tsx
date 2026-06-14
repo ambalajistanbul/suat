@@ -48,7 +48,7 @@ export default function App() {
   };
 
   return (
-    <div className="bg-brand-bg text-slate-800 min-h-screen selection:bg-brand-blue selection:text-white hero-gradient font-sans overflow-x-hidden w-full relative">
+    <div className="bg-brand-bg text-slate-800 min-h-screen selection:bg-brand-blue selection:text-white hero-gradient font-sans w-full relative">
       {/* Dynamic Navigation Sticky Bar */}
       <header className="sticky top-0 z-50 glass border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-2 sm:gap-4">
