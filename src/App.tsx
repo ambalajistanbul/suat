@@ -58,7 +58,9 @@ export default function App() {
             </div>
             <div>
               <span className="font-extrabold text-lg text-slate-900 tracking-tight font-sans block">Cârligele BESS</span>
-              <span className="text-[10px] text-brand-gold font-mono font-bold uppercase tracking-wider block">€21M Approved Grid Connection</span>
+              <span className="text-[10px] text-brand-gold font-mono font-bold uppercase tracking-wider block">
+                {lang === 'tr' ? '€21M Onaylı Şebeke Bağlantısı' : lang === 'ro' ? 'Racord la Rețea Aprobat de €21M' : lang === 'ru' ? 'Одобренное техприсоединение на €21 млн' : '€21M Approved Grid Connection'}
+              </span>
             </div>
           </div>
 
@@ -175,59 +177,69 @@ export default function App() {
       </section>
 
       {/* Main Section Content blocks */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-24">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-12 space-y-16 md:space-y-24">
         
         {/* Section 1: Drone topographies and layout */}
-        <section id="overview" className="scroll-mt-24 space-y-8">
+        <section id="overview" className="scroll-mt-24 space-y-6 md:space-y-8">
           <div className="max-w-3xl">
-            <span className="text-xs uppercase font-bold tracking-wider text-brand-gold font-mono block mb-1">VISUAL DATA ROOM</span>
-            <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">Saha Envanteri &amp; Drone Havadan Haritalama</h2>
+            <span className="text-xs uppercase font-bold tracking-wider text-brand-gold font-mono block mb-1">
+              {lang === 'ro' ? 'CAMERA DE DATE VIZUALE' : lang === 'tr' ? 'GÖRSEL VERİ ODASI' : lang === 'ru' ? 'ВИЗУАЛЬНАЯ КОМНАТА ДАННЫХ' : 'VISUAL DATA ROOM'}
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">{t.sectionOverviewTitle}</h2>
           </div>
           <DroneReconstruction lang={lang} />
         </section>
 
         {/* Section 2: Slides Pitch deck */}
-        <section id="deck" className="scroll-mt-24 space-y-8">
+        <section id="deck" className="scroll-mt-24 space-y-6 md:space-y-8">
           <div className="max-w-3xl">
-            <span className="text-xs uppercase font-bold tracking-wider text-brand-gold font-mono block mb-1">EXECUTIVE SUMMARY</span>
-            <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">Proje Detayları &amp; Yatırım Brifingi</h2>
+            <span className="text-xs uppercase font-bold tracking-wider text-brand-gold font-mono block mb-1">
+              {lang === 'ro' ? 'REZUMAT EXECUTIV' : lang === 'tr' ? 'YÖNETİCİ ÖZETİ' : lang === 'ru' ? 'КРАТКОЕ ОПИСАНИЕ' : 'EXECUTIVE SUMMARY'}
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">{t.sectionDeckTitle}</h2>
           </div>
           <DeckSection lang={lang} />
         </section>
 
         {/* Section 3: Technical ATR document explorer */}
-        <section id="atr" className="scroll-mt-24 space-y-8">
+        <section id="atr" className="scroll-mt-24 space-y-6 md:space-y-8">
           <div className="max-w-3xl">
-            <span className="text-xs uppercase font-bold tracking-wider text-brand-gold font-mono block mb-1">TRANSELECTRICA COMPLIANCE DOSSIER</span>
-            <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">Onaylı Teknik Bağlantı Şartları (ATR Verileri)</h2>
+            <span className="text-xs uppercase font-bold tracking-wider text-brand-gold font-mono block mb-1">
+              {lang === 'ro' ? 'CONFORMITATE TRANSELECTRICA' : lang === 'tr' ? 'TRANSELECTRICA UYUMLULUK DOSYASI' : lang === 'ru' ? 'СООТВЕТСТВИЕ REGLAMENT TSO' : 'TRANSELECTRICA COMPLIANCE DOSSIER'}
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">{t.sectionAtrTitle}</h2>
           </div>
           <AtrSection lang={lang} />
         </section>
 
         {/* Section 4: Investment Arbitrage calculator */}
-        <section id="calculator" className="scroll-mt-24 space-y-8">
+        <section id="calculator" className="scroll-mt-24 space-y-6 md:space-y-8">
           <div className="max-w-3xl">
-            <span className="text-xs uppercase font-bold tracking-wider text-brand-gold font-mono block mb-1">FINANCIAL PROJECTIONS</span>
-            <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">Arbitraj Rentabilite ve Payback Simülatörü</h2>
+            <span className="text-xs uppercase font-bold tracking-wider text-brand-gold font-mono block mb-1">
+              {lang === 'ro' ? 'PROIECȚII FINANCIARE' : lang === 'tr' ? 'FİNANSAL PROJEKSİYONLAR' : lang === 'ru' ? 'ФИНАНСОВЫЕ РАСЧЕТЫ' : 'FINANCIAL PROJECTIONS'}
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">{t.sectionCalculatorTitle}</h2>
           </div>
           <InvestmentCalculator lang={lang} />
         </section>
 
         {/* Section 5: Timeline ROADMAP milestones */}
-        <section id="timeline" className="scroll-mt-24 space-y-8">
+        <section id="timeline" className="scroll-mt-24 space-y-6 md:space-y-8">
           <div className="max-w-3xl">
-            <span className="text-xs uppercase font-bold tracking-wider text-brand-gold font-mono block mb-1">DEVELOPMENT STAGE CALENDAR</span>
-            <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">Proje Geliştirme Takvimi &amp; Mil Taşları</h2>
+            <span className="text-xs uppercase font-bold tracking-wider text-brand-gold font-mono block mb-1">
+              {lang === 'ro' ? 'CALENDAR ETAPE DEZVOLTARE' : lang === 'tr' ? 'PROJE GELİŞTİRME TAKVİMİ' : lang === 'ru' ? 'КАЛЕНДАРЬ ЭТАПОВ РАЗРАБОТКИ' : 'DEVELOPMENT STAGE CALENDAR'}
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">{t.sectionTimelineTitle}</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 relative">
             {/* Draw a subtle connectors vector bridge */}
             <div className="absolute top-1/2 left-0 right-0 h-px bg-slate-200 hidden lg:block -translate-y-8 z-0" />
             
             {TIMELINE_MILIEUS.map((mil, idx) => (
               <div 
                 key={idx} 
-                className={`p-6 rounded-3xl glass transition-all duration-300 relative z-10 flex flex-col justify-between h-full space-y-4 hover:border-indigo-300 ${
+                className={`p-5 md:p-6 rounded-3xl glass transition-all duration-300 relative z-10 flex flex-col justify-between h-full space-y-4 hover:border-indigo-300 ${
                   mil.highlight ? 'border-indigo-200 bg-indigo-50/50 ring-1 ring-indigo-100/50' : ''
                 }`}
               >
@@ -236,7 +248,7 @@ export default function App() {
                     <span className="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center font-mono text-xs font-extrabold">
                       {mil.phase}
                     </span>
-                    <span className="text-[10px] font-mono font-bold text-slate-600 bg-slate-50 border border-slate-200 px-2 py-1 rounded-md">
+                    <span className="text-[10px] font-mono font-bold text-slate-600 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-md">
                       {mil.dates}
                     </span>
                   </div>
@@ -246,8 +258,8 @@ export default function App() {
 
                 {mil.highlight && (
                   <div className="pt-2 border-t border-slate-100">
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-brand-blue text-white text-[9px] font-mono font-bold uppercase tracking-wider">
-                      <CheckCircle2 className="w-3 h-3" /> READY-TO-BUILD STATUS
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-brand-blue text-white text-[9px] font-mono font-bold uppercase tracking-wider">
+                      <CheckCircle2 className="w-3 h-3" /> {lang === 'ro' ? 'STADIU RTB (PREGĂTIT CONSTRUCȚIE)' : lang === 'tr' ? 'İNŞAATA HAZIR STATÜ' : lang === 'ru' ? 'СТАТУС ГОТОВНОСТИ (RTB)' : 'READY-TO-BUILD STATUS'}
                     </span>
                   </div>
                 )}
@@ -257,11 +269,13 @@ export default function App() {
         </section>
 
         {/* Section 6: Contact Deal inquiry and NDA forms */}
-        <section id="contact" className="scroll-mt-24 space-y-8">
+        <section id="contact" className="scroll-mt-24 space-y-6 md:space-y-8">
           <div className="max-w-3xl">
-            <span className="text-xs uppercase font-bold tracking-wider text-brand-gold font-mono block mb-1">M&amp;A DEAL INQUIRY &amp; NDA HOUSES</span>
-            <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">{t.contactTitle}</h2>
-            <p className="text-slate-600 text-sm max-w-xl mt-1 font-medium">{t.contactSubtitle}</p>
+            <span className="text-xs uppercase font-bold tracking-wider text-brand-gold font-mono block mb-1">
+              {lang === 'ro' ? 'SOLICITĂRI TRANZACȚIE M&A ȘI NDA' : lang === 'tr' ? 'M&A YATIRIM SORGUSU & NDA ODALARI' : lang === 'ru' ? 'ЗАПРОСЫ НА СДЕЛКУ И NDA' : 'M&A DEAL INQUIRY & NDA ROOMS'}
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">{t.contactTitle}</h2>
+            <p className="text-slate-650 text-xs sm:text-sm max-w-xl mt-1 font-medium">{t.contactSubtitle}</p>
           </div>
           <InquiryForm lang={lang} />
         </section>
@@ -270,20 +284,20 @@ export default function App() {
 
       {/* Beautiful High-Contrast Footer links */}
       <footer className="bg-slate-950 text-slate-400 border-t border-white/5 py-12 mt-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6 text-xs font-mono">
-          <div className="flex items-center gap-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6 text-xs font-mono text-center md:text-left">
+          <div className="flex flex-col sm:flex-row items-center gap-3">
             <div className="w-8 h-8 rounded-lg bg-white/10 text-white flex items-center justify-center font-bold">C</div>
             <span className="font-bold text-white font-display">Cârligele BESS Portfolio</span>
-            <span className="text-slate-700">|</span>
-            <span className="text-slate-500">© 2026 Investor Services</span>
+            <span className="text-slate-600 hidden sm:inline">|</span>
+            <span className="text-slate-500">© 2026 {lang === 'ro' ? 'Servicii pentru Investitori' : lang === 'tr' ? 'Yatırımcı Hizmetleri' : lang === 'ru' ? 'Инвестиционные услуги' : 'Investor Services'}</span>
           </div>
 
-          <div className="flex items-center gap-6">
+          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
             <a href="mailto:suat@duck.com" className="hover:text-white transition-colors flex items-center gap-1">
               <Mail className="w-3.5 h-3.5" /> suat@duck.com
             </a>
             <a href="https://t.me/akilion" target="_blank" rel="noreferrer" className="hover:text-[#38bdf8] transition-colors flex items-center gap-1">
-              <ExternalLink className="w-3.5 h-3.5" /> @akilion Direct Telegram
+              <ExternalLink className="w-3.5 h-3.5" /> {lang === 'tr' ? '@akilion Doğrudan Telegram' : lang === 'ro' ? '@akilion Contact Direct Telegram' : lang === 'ru' ? '@akilion Прямой контакт в Telegram' : '@akilion Direct Telegram'}
             </a>
           </div>
         </div>

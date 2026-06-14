@@ -125,7 +125,9 @@ export default function InvestmentCalculator({ lang }: InvestmentCalculatorProps
                 {t.calcCycleFrequency}
                 <HelpCircle className="w-3.5 h-3.5 text-slate-450 cursor-help" title="Average full charging and discharging rounds daily" />
               </span>
-              <span className="text-sm font-mono font-bold text-amber-800 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-md">{dailyCycles} Cycles</span>
+              <span className="text-sm font-mono font-bold text-amber-800 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-md">
+                {dailyCycles} {lang === 'tr' ? 'Çevrim' : lang === 'ro' ? 'Cicluri' : lang === 'ru' ? 'Циклов' : 'Cycles'}
+              </span>
             </div>
             <input
               type="range"
@@ -142,10 +144,12 @@ export default function InvestmentCalculator({ lang }: InvestmentCalculatorProps
           <div>
             <div className="flex justify-between items-center mb-2">
               <span className="text-xs md:text-sm font-bold text-slate-700 flex items-center gap-1">
-                Açılış/Önleyici Servis Yıllık Primi (€ / MW / yıl)
+                {t.calcAncillaryHeading}
                 <HelpCircle className="w-3.5 h-3.5 text-slate-450 cursor-help" title="FCR and aFRR standby premium standby tariff paid by the Operator annually" />
               </span>
-              <span className="text-sm font-mono font-bold text-amber-800 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-md">€{ancillarySvcRate.toLocaleString()} / MW / yıl</span>
+              <span className="text-sm font-mono font-bold text-amber-800 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-md">
+                €{ancillarySvcRate.toLocaleString()} {t.calcAncillarySvcUnit}
+              </span>
             </div>
             <input
               type="range"
@@ -160,14 +164,14 @@ export default function InvestmentCalculator({ lang }: InvestmentCalculatorProps
         </div>
 
         {/* Results Area */}
-        <div className="p-6 md:p-8 lg:col-span-5 bg-slate-50/50 flex flex-col justify-between space-y-6">
+        <div className="p-6 md:p-8 lg:col-span-12 xl:col-span-5 bg-slate-50/50 flex flex-col justify-between space-y-6">
           <div className="space-y-4">
             {/* CAPEX estimation */}
             <div className="border border-slate-200 bg-white p-4 rounded-2xl">
               <span className="text-[10px] uppercase font-bold text-slate-500 tracking-wider font-mono block">{t.calcCapEx}</span>
               <div className="text-2xl font-black text-slate-900 flex items-baseline gap-1 mt-1">
                 €{(estimatedCapEx / 1000000).toFixed(1)}M
-                <span className="text-xs text-slate-500 font-mono font-medium">approx. (incl. Grid €21M)</span>
+                <span className="text-xs text-slate-500 font-mono font-medium">{t.calcApproxHeading}</span>
               </div>
             </div>
 
@@ -175,7 +179,7 @@ export default function InvestmentCalculator({ lang }: InvestmentCalculatorProps
             <div className="border border-slate-200 bg-white p-4 rounded-2xl">
               <span className="text-[10px] uppercase font-bold text-slate-500 tracking-wider font-mono block">{t.calcYearlyOpEx}</span>
               <div className="text-lg font-bold text-slate-850 mt-1">
-                €{Math.round(estimatedOpEx).toLocaleString()} <span className="text-xs text-slate-500 font-mono font-normal">/ year</span>
+                €{Math.round(estimatedOpEx).toLocaleString()} <span className="text-xs text-slate-500 font-mono font-normal">{t.calcPerYearUnit}</span>
               </div>
             </div>
 
@@ -184,11 +188,15 @@ export default function InvestmentCalculator({ lang }: InvestmentCalculatorProps
               <span className="text-[10px] uppercase font-bold text-slate-500 tracking-wider font-mono block">{t.calcAnnualRevenue}</span>
               <div className="text-3xl font-black text-emerald-600 flex items-baseline gap-1 mt-1">
                 €{(totalAnnualGrossRevenue / 1000000).toFixed(2)}M
-                <span className="text-xs text-slate-500 font-mono font-medium">/ year</span>
+                <span className="text-xs text-slate-500 font-mono font-medium">{t.calcPerYearUnit}</span>
               </div>
               <div className="flex items-center gap-1.5 mt-2 text-[10px] text-slate-500 font-mono">
                 <TrendingUp className="w-3.5 h-3.5 text-emerald-600" />
-                <span>Arbitraj: €{(annualArbitrageRevenue / 1000000).toFixed(1)}M · Sistem: €{(annualAncillaryRevenue / 1000000).toFixed(1)}M</span>
+                <span>
+                  {t.calcArbitSistemSummary
+                    .replace('$$ARB$$', (annualArbitrageRevenue / 1000000).toFixed(1))
+                    .replace('$$SYS$$', (annualAncillaryRevenue / 1000000).toFixed(1))}
+                </span>
               </div>
             </div>
           </div>
@@ -202,7 +210,7 @@ export default function InvestmentCalculator({ lang }: InvestmentCalculatorProps
               <span className="text-xs text-amber-400 font-mono uppercase tracking-wider font-bold block mb-1">{t.calcPaybackPeriod}</span>
               <div className="text-4xl font-extrabold text-white">{paybackYears} {lang === 'tr' ? 'Yıl' : lang === 'ro' ? 'Ani' : lang === 'ru' ? 'Лет' : 'Years'}</div>
               <p className="text-[10px] text-slate-300 mt-2 leading-relaxed font-medium">
-                Calculated Payback timeframe factoring standard LFP chemical degradation, €21M up-front connection investment fee, and 1.5% OpEx variables. Extremely competitive EU infrastructure yield.
+                {t.calcPaybackDisclaimer}
               </p>
             </div>
           </div>

@@ -98,6 +98,51 @@ export interface TranslationSet {
   contactUrlLabel: string;
   contactTelegramLabel: string;
   contactCredibilityText: string;
+
+  // Additional sections and micro-interactions translations
+  sectionOverviewTitle: string;
+  sectionDeckTitle: string;
+  sectionAtrTitle: string;
+  sectionCalculatorTitle: string;
+  sectionTimelineTitle: string;
+  searchSpecifications: string;
+  atrApplicant: string;
+  atrIssueDate: string;
+  atrDossierSize: string;
+  atrPagesLabel: string;
+  atrTable1Title: string;
+  atrTable2Title: string;
+  atrNoMatches: string;
+  atrLegalGuarantee: string;
+  nextBtn: string;
+  prevBtn: string;
+  mediaPortalSub: string;
+  lidarCalibrated: string;
+  showOverlaysLabel: string;
+  pauseSimulation: string;
+  playDroneTitle: string;
+  playDroneDesc: string;
+  lidarCloudTitle: string;
+  lidarCloudDesc: string;
+  dossierCodeLabel: string;
+  insolationIndexLabel: string;
+  solarYieldTitle: string;
+  solarYieldDesc: string;
+  dailyAverageLabel: string;
+  annualTotalLabel: string;
+  moduleEfficiencyLabel: string;
+  transmittingRFP: string;
+  rfpGigaTransmitted: string;
+  downloadNdaPreviewLabel: string;
+  secureDepositoryOffice: string;
+  standardNdaDraftLabel: string;
+  fastTrackEvaluationsLabel: string;
+  calcAncillaryHeading: string;
+  calcAncillarySvcUnit: string;
+  calcApproxHeading: string;
+  calcPerYearUnit: string;
+  calcArbitSistemSummary: string;
+  calcPaybackDisclaimer: string;
 }
 
 export interface DeckSlide {

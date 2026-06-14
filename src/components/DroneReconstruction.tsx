@@ -34,7 +34,7 @@ export default function DroneReconstruction({ lang }: DroneReconstructionProps) 
           <div className="flex items-center gap-2 mb-1">
             <span className="w-2.5 h-2.5 bg-brand-gold rounded-full animate-pulse" />
             <span className="text-xs uppercase tracking-wider text-brand-gold font-mono font-bold flex items-center gap-1">
-              <Sparkles className="w-3.5 h-3.5 text-amber-600" /> INTERACTIVE MEDIA PORTAL
+              <Sparkles className="w-3.5 h-3.5 text-amber-600" /> {t.mediaPortalSub}
             </span>
           </div>
           <h3 className="text-2xl font-bold tracking-tight font-sans text-slate-900">{t.droneVideoTitle}</h3>
@@ -129,15 +129,15 @@ export default function DroneReconstruction({ lang }: DroneReconstructionProps) 
                 >
                   <Play className="w-8 h-8 fill-current translate-x-0.5" />
                 </motion.button>
-                <h4 className="mt-4 font-bold text-lg text-white">Cârligele Drone Flyover Flight</h4>
-                <p className="text-slate-400 text-xs max-w-md mt-1">Play the simulated drone flight presenting high-resolution aerial mapping of the flat fields, DJ205C accessibility, and surrounding topography.</p>
+                <h4 className="mt-4 font-bold text-lg text-white">{t.playDroneTitle}</h4>
+                <p className="text-slate-400 text-xs max-w-md mt-1">{t.playDroneDesc}</p>
               </div>
             ) : (
               <div className="absolute inset-0 flex items-center justify-center">
                 {/* Simulated playback controls */}
                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-slate-900/90 border border-slate-800 px-4 py-2 rounded-2xl flex items-center gap-6 shadow-xl pointer-events-auto">
                   <button onClick={() => setIsPlaying(false)} className="text-xs font-mono font-bold text-slate-300 hover:text-white flex items-center gap-1.5">
-                    <span className="w-2 h-2 bg-red-500 rounded-full" /> PAUSE SIMULATION
+                    <span className="w-2 h-2 bg-red-500 rounded-full" /> {t.pauseSimulation}
                   </button>
                   <div className="w-32 h-1.5 bg-slate-800 rounded-full overflow-hidden">
                     <motion.div 
@@ -183,16 +183,16 @@ export default function DroneReconstruction({ lang }: DroneReconstructionProps) 
               >
                 <div className="flex items-center justify-center gap-1.5 mb-2">
                   <Activity className="w-5 h-5 text-emerald-400 animate-pulse" />
-                  <span className="text-sm font-bold font-display text-white">LiDAR Cloud Reconstruction</span>
+                  <span className="text-sm font-bold font-display text-white">{t.lidarCloudTitle}</span>
                 </div>
                 <p className="text-slate-400 text-xs leading-relaxed">
-                  The topographic profile consists of flat clay terrains (+64m) raising seamlessly into robust solar-efficient plateau segments (+176m) optimal for battery drainage and wind gusts.
+                  {t.lidarCloudDesc}
                 </p>
               </motion.div>
             </div>
 
             <div className="absolute left-6 bottom-6 bg-slate-950/80 border border-slate-800 px-3 py-2 rounded-xl text-left pointer-events-none">
-              <div className="text-[10px] uppercase text-brand-gold font-bold tracking-wider font-mono">Dossier Code</div>
+              <div className="text-[10px] uppercase text-brand-gold font-bold tracking-wider font-mono">{t.dossierCodeLabel}</div>
               <div className="text-sm font-bold text-white font-mono">LDR-CARL-V1</div>
             </div>
           </div>
@@ -201,27 +201,27 @@ export default function DroneReconstruction({ lang }: DroneReconstructionProps) 
         {/* VIEW 3: Solar Yield Emisivite */}
         {activeTab === 'reflectivity' && (
           <div className="absolute inset-0 w-full h-full bg-[#05050a] flex flex-col justify-between p-6">
-            <div className="w-full max-w-md border border-slate-800 bg-slate-950/80 p-4 rounded-2xl self-start">
-              <span className="text-[#f59e0b] font-mono font-bold text-[10px] tracking-wider uppercase block mb-1">Insolation Index</span>
-              <h4 className="text-white font-bold font-display text-base">Güneş Enerjisi Emisivite Modeli</h4>
+            <div className="w-full max-w-sm md:max-w-md border border-slate-800 bg-slate-950/80 p-4 rounded-2xl self-start">
+              <span className="text-[#f59e0b] font-mono font-bold text-[10px] tracking-wider uppercase block mb-1">{t.insolationIndexLabel}</span>
+              <h4 className="text-white font-bold font-display text-base">{t.solarYieldTitle}</h4>
               <p className="text-slate-400 text-xs mt-1">
-                45°40’K enleminde, yıllık m² başına 1.340 kWh/m² teorik ışınım değeriyle hem BESS şarj-deşarj çevrimini hem de 25 MW Solar dizisini destekleyen kararlı mikroiklim.
+                {t.solarYieldDesc}
               </p>
             </div>
 
-            <div className="flex items-center gap-6 bg-slate-950/80 border border-slate-800 p-4 rounded-2xl self-start text-xs font-mono">
+            <div className="flex flex-wrap md:flex-nowrap items-center gap-4 bg-slate-950/80 border border-slate-800 p-3 md:p-4 rounded-2xl self-start text-xs font-mono">
               <div>
-                <span className="text-slate-500 block text-[9px]">GÜNLÜK ORTALAMA</span>
+                <span className="text-slate-500 block text-[9px]">{t.dailyAverageLabel}</span>
                 <span className="text-emerald-400 font-bold block text-sm">4.33 Hrs Peak</span>
               </div>
-              <div className="w-px h-8 bg-slate-800" />
+              <div className="hidden md:block w-px h-8 bg-slate-800" />
               <div>
-                <span className="text-slate-500 block text-[9px]">YILLIK TOPLAM DEĞER</span>
+                <span className="text-slate-500 block text-[9px]">{t.annualTotalLabel}</span>
                 <span className="text-brand-gold font-bold block text-sm">1,340 kWh/m²</span>
               </div>
-              <div className="w-px h-8 bg-slate-800" />
+              <div className="hidden md:block w-px h-8 bg-slate-800" />
               <div>
-                <span className="text-slate-500 block text-[9px]">PANEL VERİMLİLİĞİ</span>
+                <span className="text-slate-500 block text-[9px]">{t.moduleEfficiencyLabel}</span>
                 <span className="text-sky-400 font-bold block text-sm">21.8% N-Type</span>
               </div>
             </div>
@@ -272,13 +272,13 @@ export default function DroneReconstruction({ lang }: DroneReconstructionProps) 
             onChange={(e) => setShowOverlays(e.target.checked)}
             className="w-4 h-4 rounded-md accent-brand-gold cursor-pointer"
           />
-          <span className="text-slate-700 font-semibold">Show Site Boundary Hotspots & Labels Overlay</span>
+          <span className="text-slate-700 font-semibold">{t.showOverlaysLabel}</span>
         </label>
 
         <div className="flex items-center gap-4 text-slate-500 font-mono text-[9px] uppercase tracking-wider">
           <span className="flex items-center gap-1 text-emerald-600 font-bold">
             <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-ping" />
-            LIDAR RECONSTRUCTION CALIBRATED
+            {t.lidarCalibrated}
           </span>
           <span>·</span>
           <span>RO GRIDS V4.1IA</span>
