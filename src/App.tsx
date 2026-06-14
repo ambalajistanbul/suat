@@ -38,9 +38,9 @@ export default function App() {
   // Quick stats computed or defined
   const statsList = [
     { label: lang === 'tr' ? "BESS TOPLAM GÜCÜ" : lang === 'ro' ? "PUTERE TOTALĂ BESS" : lang === 'ru' ? "ОБЩАЯ МОЩНОСТЬ BESS" : "TOTAL BESS POWER", value: "300 MW", desc: "2 × 150 MW BESS", icon: Battery, color: "text-brand-gold" },
-    { label: lang === 'tr' ? "YILLIK GÜNEŞ ÜRETİMİ" : lang === 'ro' ? "TOTAL FOTOVOLTAIC" : lang === 'ru' ? "ФОТОЭЛЕКТРИЧЕСКАЯ МОЩНОСТЬ" : "CALCULATED PV CAPACITY", value: "25 MWp", desc: "41,664 Premium Modules", icon: Sun, color: "text-[#f59e0b]" },
-    { label: lang === 'tr' ? "GÜVENCELİ ARAZİ" : lang === 'ro' ? "TEREN ASIGURAT" : lang === 'ru' ? "ОБЩАЯ ПЛОЩАДЬ ЗЕМЛИ" : "SECURED MUNICIPAL LAND", value: "31 Hectare", desc: "49 Years Lease Contract", icon: MapPin, color: "text-emerald-500" },
-    { label: lang === 'tr' ? "BAĞLANTI MALİYETİ" : lang === 'ro' ? "RACORD LA RETEA APROBAT" : lang === 'ru' ? "ОЦЕНКА ПОДКЛЮЧЕНИЯ" : "APPROVED CONNECTION TARIFF", value: "€21M", desc: "No system reinforcement requested", icon: DollarSign, color: "text-sky-400" }
+    { label: lang === 'tr' ? "YILLIK GÜNEŞ ÜRETİMİ" : lang === 'ro' ? "TOTAL FOTOVOLTAIC" : lang === 'ru' ? "ФОТОЭЛЕКТРИЧЕСКАЯ МОЩНОСТЬ" : "CALCULATED PV CAPACITY", value: "25 MWp", desc: lang === 'tr' ? "41.664 Premium Panel" : lang === 'ro' ? "41.664 de Module Premium" : lang === 'ru' ? "41 664 премиум-панелей" : "41,664 Premium Modules", icon: Sun, color: "text-[#f59e0b]" },
+    { label: lang === 'tr' ? "GÜVENCELİ ARAZİ" : lang === 'ro' ? "TEREN ASIGURAT" : lang === 'ru' ? "ОБЩАЯ ПЛОЩАДЬ ЗЕМЛИ" : "SECURED MUNICIPAL LAND", value: "31 Hectare", desc: lang === 'tr' ? "49 Yıllık Superficie Sözleşmesi" : lang === 'ro' ? "Superficie pe 49 de Ani" : lang === 'ru' ? "Суперфиций на 49 лет" : "49 Years Lease Contract", icon: MapPin, color: "text-emerald-500" },
+    { label: lang === 'tr' ? "BAĞLANTI MALİYETİ" : lang === 'ro' ? "RACORD LA RETEA APROBAT" : lang === 'ru' ? "ОЦЕНКА ПОДКЛЮЧЕНИЯ" : "APPROVED CONNECTION TARIFF", value: "€21M", desc: lang === 'tr' ? "Şebeke güçlendirme masrafı yok" : lang === 'ro' ? "Fără întăriri necesare de rețea" : lang === 'ru' ? "Усиление сетей не требуется" : "No system reinforcement requested", icon: DollarSign, color: "text-sky-400" }
   ];
 
   const handleLanguageChange = (selectedLang: Language) => {

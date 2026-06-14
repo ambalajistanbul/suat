@@ -18,13 +18,16 @@ export default function DroneReconstruction({ lang }: DroneReconstructionProps) 
   const [isPlaying, setIsPlaying] = useState(false);
   const [showOverlays, setShowOverlays] = useState(true);
   const t = TRANSLATIONS[lang];
+  const approvedLabel = lang === 'tr' ? 'Onaylı' : lang === 'ro' ? 'Aprobat' : lang === 'ru' ? 'Одобрено' : 'Approved';
+  const pvDesc = lang === 'tr' ? '41.664 Monokristal Panel Modülü' : lang === 'ro' ? '41.664 module fotovoltaice monocristaline' : lang === 'ru' ? '41 664 монокристаллических модуля' : '41,664 Monocrystalline Modules';
+  const subDesc = lang === 'tr' ? '220kV Focșani Vest fider bağlantısı' : lang === 'ro' ? 'Conexiune de 220kV în stația Focșani Vest' : lang === 'ru' ? 'Ячейка подключения 220 кВ ПС Фокшаны Вест' : 'Focșani Vest connection bay @ 220kV';
 
   // Coordinates of our BESS points
   const points = [
-    { label: "BESS Site 1 (Cârligele 1)", x: "32%", y: "45%", desc: "150 MW / 300 MWh · Onaylı" },
-    { label: "BESS Site 2 (Cârligele 2)", x: "48%", y: "55%", desc: "150 MW / 300 MWh · Onaylı" },
-    { label: "PV Array (25 MW Solar)", x: "38%", y: "74%", desc: "41,664 Monocrystalline Modules" },
-    { label: "Substation Ext.", x: "85%", y: "15%", desc: "Focșani Vest connection bay @ 220kV" }
+    { label: "BESS Site 1 (Cârligele 1)", x: "32%", y: "45%", desc: `150 MW / 300 MWh · ${approvedLabel}` },
+    { label: "BESS Site 2 (Cârligele 2)", x: "48%", y: "55%", desc: `150 MW / 300 MWh · ${approvedLabel}` },
+    { label: "PV Array (25 MW Solar)", x: "38%", y: "74%", desc: pvDesc },
+    { label: "Substation Ext.", x: "85%", y: "15%", desc: subDesc }
   ];
 
   return (

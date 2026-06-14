@@ -20,6 +20,7 @@ export default function InvestmentCalculator({ lang }: InvestmentCalculatorProps
   const [ancillarySvcRate, setAncillarySvcRate] = useState<number>(12000); // €/MW per year system services
   
   const t = TRANSLATIONS[lang];
+  const hoursLabel = lang === 'tr' ? 'Saat' : lang === 'ro' ? 'Ore' : lang === 'ru' ? 'Часа' : 'Hours';
 
   // Calculations
   const bessCapacityMWh = bessPower * bessDuration;
@@ -82,10 +83,10 @@ export default function InvestmentCalculator({ lang }: InvestmentCalculatorProps
           <div>
             <div className="flex justify-between items-center mb-2">
               <span className="text-xs md:text-sm font-bold text-slate-700 flex items-center gap-1">
-                {t.calcBessEnergy} (Hours)
+                {t.calcBessEnergy} ({hoursLabel})
                 <HelpCircle className="w-3.5 h-3.5 text-slate-450 cursor-help" title="Discharge rate hours defining total MWh capacity" />
               </span>
-              <span className="text-sm font-mono font-bold text-amber-800 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-md">{bessDuration} {t.calcYears} / {bessCapacityMWh} MWh</span>
+              <span className="text-sm font-mono font-bold text-amber-800 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-md">{bessDuration} {hoursLabel} / {bessCapacityMWh} MWh</span>
             </div>
             <input
               type="range"

@@ -62,7 +62,7 @@ export default function AtrSection({ lang }: AtrSectionProps) {
           </span>
           <input
             type="text"
-            placeholder={lang === 'tr' ? 'Teknik parametre ara...' : 'Search specification...'}
+            placeholder={t.searchSpecifications}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="input-field w-full rounded-xl px-4 py-2.5 pl-10 text-xs font-medium outline-none transition-all"
@@ -86,7 +86,7 @@ export default function AtrSection({ lang }: AtrSectionProps) {
                 <Building className="w-5 h-5 text-indigo-600" />
               </span>
               <div>
-                <span className="text-[9px] uppercase tracking-wider text-slate-500 font-mono block font-bold">Devlete Ait ATR Başvuru Sahibi</span>
+                <span className="text-[9px] uppercase tracking-wider text-slate-500 font-mono block font-bold">{t.atrApplicant}</span>
                 <span className="text-xs font-bold text-slate-900 block truncate">{atrDoc.applicant}</span>
               </div>
             </div>
@@ -96,7 +96,7 @@ export default function AtrSection({ lang }: AtrSectionProps) {
                 <Calendar className="w-5 h-5 text-emerald-700" />
               </span>
               <div>
-                <span className="text-[9px] uppercase tracking-wider text-slate-500 font-mono block font-bold">Resmi Düzenlenme Tarihi</span>
+                <span className="text-[9px] uppercase tracking-wider text-slate-500 font-mono block font-bold">{t.atrIssueDate}</span>
                 <span className="text-xs font-bold text-slate-900 block">{atrDoc.regDate}</span>
               </div>
             </div>
@@ -106,8 +106,8 @@ export default function AtrSection({ lang }: AtrSectionProps) {
                 <Info className="w-5 h-5 text-brand-gold" />
               </span>
               <div>
-                <span className="text-[9px] uppercase tracking-wider text-slate-500 font-mono block font-bold">ATR Onaylı Tesis Dosya Boyutu</span>
-                <span className="text-xs font-bold text-slate-900 block">{atrDoc.pages} Sayfa (İmza Onaylı Suret)</span>
+                <span className="text-[9px] uppercase tracking-wider text-slate-500 font-mono block font-bold">{t.atrDossierSize}</span>
+                <span className="text-xs font-bold text-slate-900 block">{atrDoc.pages} {t.atrPagesLabel}</span>
               </div>
             </div>
           </div>
@@ -118,7 +118,7 @@ export default function AtrSection({ lang }: AtrSectionProps) {
             <div className="border border-slate-200 bg-slate-50/30 rounded-2xl p-4 md:p-6 space-y-4">
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                 <span className="text-xs font-bold uppercase font-mono text-brand-gold flex items-center gap-1.5">
-                  <Sparkles className="w-4 h-4 text-amber-600" /> TABLO 1: Enerji Kapasite Yapısı
+                  <Sparkles className="w-4 h-4 text-amber-600" /> {t.atrTable1Title}
                 </span>
                 <span className="text-[10px] font-mono text-slate-600 bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200">BESS 150MW / 309.6MWh</span>
               </div>
@@ -133,7 +133,7 @@ export default function AtrSection({ lang }: AtrSectionProps) {
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-8 text-xs text-slate-500 font-mono">Aranan teknik sipesifikasyon bulunamadı.</div>
+                <div className="text-center py-8 text-xs text-slate-500 font-mono">{t.atrNoMatches}</div>
               )}
             </div>
 
@@ -141,7 +141,7 @@ export default function AtrSection({ lang }: AtrSectionProps) {
             <div className="border border-slate-200 bg-slate-50/30 rounded-2xl p-4 md:p-6 space-y-4">
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                 <span className="text-xs font-bold uppercase font-mono text-brand-gold flex items-center gap-1.5">
-                  <Sparkles className="w-4 h-4 text-amber-600" /> TABLO 2: Şebeke & İnvertör Altyapısı
+                  <Sparkles className="w-4 h-4 text-amber-600" /> {t.atrTable2Title}
                 </span>
                 <span className="text-[10px] font-mono text-slate-600 bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200">900 x EH Inverters</span>
               </div>
@@ -156,7 +156,7 @@ export default function AtrSection({ lang }: AtrSectionProps) {
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-8 text-xs text-slate-500 font-mono">Aranan teknik sipesifikasyon bulunamadı.</div>
+                <div className="text-center py-8 text-xs text-slate-500 font-mono">{t.atrNoMatches}</div>
               )}
             </div>
           </div>
@@ -164,10 +164,8 @@ export default function AtrSection({ lang }: AtrSectionProps) {
       </AnimatePresence>
 
       <div className="bg-indigo-50 border border-indigo-100 p-4 rounded-2xl mt-6 flex items-start gap-3">
-        <ShieldAlert className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
-        <p className="text-slate-700 text-xs md:text-sm leading-relaxed">
-          <strong>Hukuki Geçerlilik Garantisi:</strong> Yukarıdaki teknik parametreler, Romanya Ulusal Elektrik İletim Şebekesi (Transelectrica) tarafından onaylanan, fider tahsis bedelleri ödenmiş ve her iki SPV için resmen tescillenmiş teknik bağlantı dosyalarından (Aviz Tehnic de Racordare) doğrudan derlenmiştir. Bu veriler satın alma Due Diligence sürecinde teyid edilebilir.
-        </p>
+        <ShieldAlert className="w-5 h-5 text-amber-605 shrink-0 mt-0.5" />
+        <p className="text-slate-700 text-xs md:text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t.atrLegalGuarantee }} />
       </div>
     </div>
   );

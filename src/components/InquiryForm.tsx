@@ -158,7 +158,7 @@ ISSUED: June 2026`;
                 value={formData.message}
                 onChange={(e) => setFormData({...formData, message: e.target.value})}
                 className="input-field w-full rounded-xl px-4 py-2.5 text-slate-800 font-bold bg-slate-50 outline-none transition-all resize-none"
-                placeholder="Briefly summarize your institutional parameters, purchase budget range, and timeline guidelines..."
+                placeholder={lang === 'tr' ? 'Lütfen kurumsal parametrelerinizi, bütçe aralığınızı ve satın alma takviminizi kısaca özetleyin...' : lang === 'ro' ? 'Vă rugăm să rezumați pe scurt parametrii instituționali, intervalul de buget și calendarul tranzacției...' : lang === 'ru' ? 'Пожалуйста, кратко опишите параметры вашей организации, бюджетный диапазон и график планируемой сделки...' : 'Briefly summarize your institutional parameters, purchase budget range, and timeline guidelines...'}
               />
             </div>
 
@@ -186,7 +186,7 @@ ISSUED: June 2026`;
               className="w-full btn-primary text-white font-black py-3 px-6 rounded-xl flex items-center justify-center gap-2 cursor-pointer shadow-md disabled:opacity-50"
             >
               <Send className="w-4 h-4" />
-              {isSubmitting ? "TRANSMITTING RFP REQUEST..." : t.contactFormSubmit}
+              {isSubmitting ? t.transmittingRFP : t.contactFormSubmit}
             </motion.button>
           </form>
         ) : (
@@ -198,7 +198,7 @@ ISSUED: June 2026`;
             <div className="w-16 h-16 rounded-full bg-emerald-100 border border-emerald-300 flex items-center justify-center text-emerald-600 shadow-sm">
               <CheckCircle className="w-10 h-10" />
             </div>
-            <h4 className="text-2xl font-black text-slate-900 font-sans">RFP Signal Transmitted</h4>
+            <h4 className="text-2xl font-black text-slate-900 font-sans">{t.rfpGigaTransmitted}</h4>
             <p className="text-slate-600 text-sm max-w-sm leading-relaxed font-bold">
               {t.contactFormSuccess}
             </p>
@@ -207,7 +207,7 @@ ISSUED: June 2026`;
                 onClick={handleDownloadStubNda}
                 className="mt-2 text-xs font-mono font-bold text-amber-700 hover:text-amber-800 flex items-center gap-1.5 border border-amber-200 px-4 py-2 rounded-xl bg-amber-50"
               >
-                <FileText className="w-4 h-4 text-amber-600" /> DOWNLOAD NDA PREVIEW TEMPLATE
+                <FileText className="w-4 h-4 text-amber-600" /> {t.downloadNdaPreviewLabel}
               </button>
             )}
           </motion.div>
@@ -219,7 +219,7 @@ ISSUED: June 2026`;
         <div className="space-y-6">
           <div className="space-y-2">
             <span className="text-[10px] font-mono font-bold tracking-wider text-brand-gold uppercase bg-brand-gold/10 px-2.5 py-1 rounded-md border border-brand-gold/20">
-              SECURE DEPOSITORY OFFICE
+              {t.secureDepositoryOffice}
             </span>
             <h4 className="text-xl md:text-2xl font-bold font-sans text-white">{t.contactInfoTitle}</h4>
           </div>
@@ -257,8 +257,8 @@ ISSUED: June 2026`;
         {/* NDA Quick download templates banner */}
         <div className="bg-slate-950 border border-slate-850 p-4 rounded-2xl flex items-center justify-between gap-4">
           <div className="space-y-1">
-            <span className="block text-xs font-bold text-white">NDA Standard Draft (.txt)</span>
-            <span className="block text-[10px] text-slate-500 font-medium">Fast-track evaluation terms ready</span>
+            <span className="block text-xs font-bold text-white">{t.standardNdaDraftLabel}</span>
+            <span className="block text-[10px] text-slate-500 font-medium">{t.fastTrackEvaluationsLabel}</span>
           </div>
           <motion.button 
             whileHover={{ scale: 1.05 }}

@@ -118,7 +118,7 @@ export default function DeckSection({ lang }: DeckSectionProps) {
                 className="w-24 h-10 btn-primary text-white font-bold text-xs rounded-xl flex items-center justify-center gap-1 cursor-pointer transition-colors shadow-md"
                 aria-label="Next slide"
               >
-                Next
+                {t.nextBtn}
                 <ChevronRight className="w-4 h-4" />
               </button>
             </div>
