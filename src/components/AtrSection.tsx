@@ -9,6 +9,121 @@ import { FileSpreadsheet, ShieldAlert, Award, Search, Sparkles, Building, Calend
 import { Language } from '../types';
 import { ATR_DOCUMENTS, TRANSLATIONS } from '../data';
 
+const translateKey = (key: string, lang: Language): string => {
+  const dictionary: Record<string, Record<Language, string>> = {
+    "Tip IS (Battery Type)": {
+      tr: "Batarya Kimya Tipi (Tip IS)",
+      en: "Battery Chemistry (Tip IS)",
+      ro: "Tipul Bateriei (Tip IS)",
+      ru: "Тип АКБ (Tip IS)"
+    },
+    "Pi IS (Installed Power)": {
+      tr: "Kurulu Güç (Pi IS)",
+      en: "Installed Power (Pi IS)",
+      ro: "Putere Instalată (Pi IS)",
+      ru: "Установленная мощность (Pi IS)"
+    },
+    "Pmax evac IS (Max Evac)": {
+      tr: "Maksimum Tahliye Gücü (Pmax evac IS)",
+      en: "Max Evacuation Power (Pmax evac IS)",
+      ro: "Putere Max Evacuabilă (Pmax evac IS)",
+      ru: "Макс. мощность выдачи (Pmax evac IS)"
+    },
+    "Pmax abs IS (Max Abs)": {
+      tr: "Maksimum Çekim Gücü (Pmax abs IS)",
+      en: "Max Absorption Power (Pmax abs IS)",
+      ro: "Putere Max Absorbită (Pmax abs IS)",
+      ru: "Макс. мощность потребления (Pmax abs IS)"
+    },
+    "Total Max Capacity (Ah)": {
+      tr: "Toplam Maksimum Kapasite",
+      en: "Total Maximum Capacity",
+      ro: "Capacitate Totală Maximă",
+      ru: "Общая максимальная емкость"
+    },
+    "Total Stored Energy": {
+      tr: "Toplam Depolanan Enerji",
+      en: "Total Stored Energy",
+      ro: "Energie Totală Stocată",
+      ru: "Запасенная энергия"
+    },
+    "No. of Inverters": {
+      tr: "İnvertör Adedi",
+      en: "Count of Inverters",
+      ro: "Număr de Invertoare",
+      ru: "Количество инверторов"
+    },
+    "Inverter AC Voltage": {
+      tr: "İnvertör AC Çıkış Voltajı",
+      en: "Inverter AC Voltage",
+      ro: "Tensiune AC Invertor",
+      ru: "Напряжение AC инвертора"
+    },
+    "Inverter Installed Power": {
+      tr: "İnvertör Kurulu Gücü",
+      en: "Inverter Installed Power",
+      ro: "Putere Instalată Invertor",
+      ru: "Номинал инвертора"
+    },
+    "Internal Services Size": {
+      tr: "İç Tüketim Yardımcı Gücü",
+      en: "Internal Services auxiliary",
+      ro: "Servicii Interne",
+      ru: "Собственные нужды"
+    },
+    "GSU Transformer": {
+      tr: "Ana GSU Transformatör",
+      en: "Grid Step-Up Transformer",
+      ro: "Transformator GSU principal",
+      ru: "Повышающий трансформатор GSU"
+    },
+    "Measurement Class": {
+      tr: "Ölçüm Doğruluk Sınıfı",
+      en: "Metering System Class",
+      ro: "Clasă de Măsură Contor",
+      ru: "Класс точности учета"
+    }
+  };
+
+  return dictionary[key]?.[lang] || key;
+};
+
+const translateValue = (value: string, lang: Language): string => {
+  if (value.includes("Lithium Iron Phosphate")) {
+    return {
+      tr: "LFP (Lityum Demir Fosfat)",
+      en: "LFP (Lithium Iron Phosphate)",
+      ro: "LFP (Litiu Fier Fosfat)",
+      ru: "LFP (Литий-железо-фосфат)"
+    }[lang] || value;
+  }
+  if (value.includes("Class A")) {
+    return {
+      tr: "A Sınıfı (SR EN 61050-3-40)",
+      en: "Class A (SR EN 61050-3-40)",
+      ro: "Clasa A (SR EN 61050-3-40)",
+      ru: "Класс А (SR EN 61050-3-40)"
+    }[lang] || value;
+  }
+  if (value.includes("pcs")) {
+    return {
+      tr: "900 adet (EH-0200-HA-M Modeli)",
+      en: "900 pcs (EH-0200-HA-M)",
+      ro: "900 bucăți (EH-0200-HA-M)",
+      ru: "900 шт (EH-0200-HA-M)"
+    }[lang] || value;
+  }
+  if (value.includes("Total:")) {
+    return {
+      tr: "200 kW (Toplam: 198.000 kW)",
+      en: "200 kW (Total: 198,000 kW)",
+      ro: "200 kW (Total: 198.000 kW)",
+      ru: "200 кВт (Всего: 198 000 кВт)"
+    }[lang] || value;
+  }
+  return value;
+};
+
 interface AtrSectionProps {
   lang: Language;
 }
@@ -127,8 +242,8 @@ export default function AtrSection({ lang }: AtrSectionProps) {
                 <div className="space-y-2 font-mono text-xs">
                   {filteredTable1.map((item, idx) => (
                     <div key={idx} className="flex justify-between items-start py-2 border-b border-slate-100 hover:bg-slate-50 px-2 rounded-lg transition-colors gap-4">
-                      <span className="text-slate-600 font-semibold text-left leading-tight">{item.key}</span>
-                      <span className="text-slate-900 font-bold text-right shrink-0">{item.value}</span>
+                      <span className="text-slate-600 font-semibold text-left leading-tight">{translateKey(item.key, lang)}</span>
+                      <span className="text-slate-900 font-bold text-right shrink-0">{translateValue(item.value, lang)}</span>
                     </div>
                   ))}
                 </div>
@@ -143,15 +258,15 @@ export default function AtrSection({ lang }: AtrSectionProps) {
                 <span className="text-xs font-bold uppercase font-mono text-brand-gold flex items-center gap-1.5">
                   <Sparkles className="w-4 h-4 text-amber-600" /> {t.atrTable2Title}
                 </span>
-                <span className="text-[10px] font-mono text-slate-600 bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200">900 x EH Inverters</span>
+                <span className="text-[10px] font-mono text-slate-600 bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200 font-bold font-bold">900 x EH Inverters</span>
               </div>
 
               {filteredTable2.length > 0 ? (
                 <div className="space-y-2 font-mono text-xs">
                   {filteredTable2.map((item, idx) => (
                     <div key={idx} className="flex justify-between items-start py-2 border-b border-slate-100 hover:bg-slate-50 px-2 rounded-lg transition-colors gap-4">
-                      <span className="text-slate-600 font-semibold text-left leading-tight">{item.key}</span>
-                      <span className="text-slate-900 font-bold text-right shrink-0">{item.value}</span>
+                      <span className="text-slate-600 font-semibold text-left leading-tight">{translateKey(item.key, lang)}</span>
+                      <span className="text-slate-900 font-bold text-right shrink-0">{translateValue(item.value, lang)}</span>
                     </div>
                   ))}
                 </div>
