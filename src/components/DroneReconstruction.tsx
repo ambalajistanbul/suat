@@ -15,13 +15,13 @@ interface DroneReconstructionProps {
 
 export default function DroneReconstruction({ lang }: DroneReconstructionProps) {
   const [activeTab, setActiveTab] = useState<'drone' | 'lidar' | 'reflectivity'>('drone');
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [showOverlays, setShowOverlays] = useState(true);
   
-  // Custom Video Integration State
-  const [videoInput, setVideoInput] = useState<string>('');
-  const [activeVideoUrl, setActiveVideoUrl] = useState<string>('');
-  const [videoType, setVideoType] = useState<'simulated' | 'youtube' | 'vimeo' | 'mp4'>('simulated');
+  // Custom Video Integration State (Initialized with user's specific drone flight URL)
+  const [videoInput, setVideoInput] = useState<string>('https://www.youtube.com/watch?v=rXWnRLx6Bs8');
+  const [activeVideoUrl, setActiveVideoUrl] = useState<string>('https://www.youtube.com/embed/rXWnRLx6Bs8?autoplay=1&mute=1&loop=1&playlist=rXWnRLx6Bs8&controls=1&showinfo=0&rel=0&iv_load_policy=3');
+  const [videoType, setVideoType] = useState<'simulated' | 'youtube' | 'vimeo' | 'mp4'>('youtube');
 
   // LiDAR Interactive 3D Rotation State
   const [rotateX, setRotateX] = useState<number>(25);
@@ -277,9 +277,9 @@ export default function DroneReconstruction({ lang }: DroneReconstructionProps) 
               </div>
             </div>
 
-            {/* Play Button Overlay (when not playing and is on simulated) */}
-            {!isPlaying && videoType === 'simulated' && (
-              <div className="absolute inset-0 bg-slate-950/75 backdrop-blur-xs flex flex-col items-center justify-center p-6 text-center z-30">
+            {/* Play Button Overlay (when not playing) */}
+            {!isPlaying && (
+              <div className="absolute inset-0 bg-slate-950/75 backdrop-blur-xs flex flex-col items-center justify-center p-6 text-center z-30 pointer-events-auto">
                 <motion.button 
                   whileHover={{ scale: 1.08 }}
                   whileTap={{ scale: 0.95 }}
@@ -288,8 +288,12 @@ export default function DroneReconstruction({ lang }: DroneReconstructionProps) 
                 >
                   <Play className="w-8 h-8 fill-current translate-x-0.5" />
                 </motion.button>
-                <h4 className="mt-4 font-bold text-lg text-white">{t.playDroneTitle}</h4>
-                <p className="text-slate-400 text-xs max-w-sm mt-1">{t.playDroneDesc}</p>
+                <h4 className="mt-4 font-bold text-lg text-white">
+                  {videoType === 'simulated' ? t.playDroneTitle : (lang === 'tr' ? 'VİDEO OYNATMAYI BAŞLAT' : 'START DRONE VIDEO FEED')}
+                </h4>
+                <p className="text-slate-400 text-xs max-w-sm mt-1">
+                  {videoType === 'simulated' ? t.playDroneDesc : (lang === 'tr' ? 'Canlı dron görüntüsünü telemetri HUD verileriyle başlatmak için tıklayın.' : 'Click to start the live drone overlay feed with active telemetry HUD HUD.')}
+                </p>
               </div>
             )}
 
