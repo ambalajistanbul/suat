@@ -28,25 +28,25 @@ export default function DroneReconstruction({ lang }: DroneReconstructionProps) 
   ];
 
   return (
-    <div className="glass rounded-3xl overflow-hidden shadow-2xl">
-      <div className="p-6 md:p-8 border-b border-white/5 bg-slate-950/40 flex flex-col md:flex-row md:items-center justify-between gap-4">
+    <div className="glass rounded-3xl overflow-hidden shadow-xl">
+      <div className="p-6 md:p-8 border-b border-slate-100 bg-slate-50/50 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="w-2.5 h-2.5 bg-brand-gold rounded-full animate-pulse" />
             <span className="text-xs uppercase tracking-wider text-brand-gold font-mono font-bold flex items-center gap-1">
-              <Sparkles className="w-3.5 h-3.5" /> INTERACTIVE MEDIA PORTAL
+              <Sparkles className="w-3.5 h-3.5 text-amber-600" /> INTERACTIVE MEDIA PORTAL
             </span>
           </div>
-          <h3 className="text-2xl font-bold tracking-tight font-display text-white">{t.droneVideoTitle}</h3>
-          <p className="text-slate-400 text-sm max-w-xl mt-1">{t.droneVideoSubtitle}</p>
+          <h3 className="text-2xl font-bold tracking-tight font-sans text-slate-900">{t.droneVideoTitle}</h3>
+          <p className="text-slate-650 text-sm max-w-xl mt-1 font-medium">{t.droneVideoSubtitle}</p>
         </div>
 
         {/* View Selection Controls */}
-        <div className="flex bg-slate-950/60 border border-white/10 p-1.5 rounded-2xl self-start md:self-auto shrink-0 font-mono text-xs">
+        <div className="flex bg-slate-100 border border-slate-200/80 p-1.5 rounded-2xl self-start md:self-auto shrink-0 font-mono text-xs">
           <button
             onClick={() => setActiveTab('drone')}
-            className={`px-4 py-2 rounded-xl transition-all font-semibold flex items-center gap-1.5 cursor-pointer ${
-              activeTab === 'drone' ? 'bg-brand-blue text-white shadow-lg' : 'text-slate-400 hover:text-white'
+            className={`px-4 py-2 rounded-xl transition-all font-bold flex items-center gap-1.5 cursor-pointer ${
+              activeTab === 'drone' ? 'bg-brand-blue text-white shadow-md' : 'text-slate-600 hover:text-slate-900'
             }`}
           >
             <Play className="w-3.5 h-3.5" />
@@ -54,8 +54,8 @@ export default function DroneReconstruction({ lang }: DroneReconstructionProps) 
           </button>
           <button
             onClick={() => setActiveTab('lidar')}
-            className={`px-4 py-2 rounded-xl transition-all font-semibold flex items-center gap-1.5 cursor-pointer ${
-              activeTab === 'lidar' ? 'bg-brand-blue text-white shadow-lg' : 'text-slate-400 hover:text-white'
+            className={`px-4 py-2 rounded-xl transition-all font-bold flex items-center gap-1.5 cursor-pointer ${
+              activeTab === 'lidar' ? 'bg-brand-blue text-white shadow-md' : 'text-slate-600 hover:text-slate-900'
             }`}
           >
             <Compass className="w-3.5 h-3.5" />
@@ -63,8 +63,8 @@ export default function DroneReconstruction({ lang }: DroneReconstructionProps) 
           </button>
           <button
             onClick={() => setActiveTab('reflectivity')}
-            className={`px-4 py-2 rounded-xl transition-all font-semibold flex items-center gap-1.5 cursor-pointer ${
-              activeTab === 'reflectivity' ? 'bg-brand-blue text-white shadow-lg' : 'text-slate-400 hover:text-white'
+            className={`px-4 py-2 rounded-xl transition-all font-bold flex items-center gap-1.5 cursor-pointer ${
+              activeTab === 'reflectivity' ? 'bg-brand-blue text-white shadow-md' : 'text-slate-600 hover:text-slate-900'
             }`}
           >
             <Layers className="w-3.5 h-3.5" />
@@ -264,7 +264,7 @@ export default function DroneReconstruction({ lang }: DroneReconstructionProps) 
       </div>
 
       {/* Interactive Controls Bar */}
-      <div className="p-4 md:p-6 bg-slate-950/80 border-t border-white/5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-xs">
+      <div className="p-4 md:p-6 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-xs">
         <label className="flex items-center gap-2 cursor-pointer select-none">
           <input 
             type="checkbox" 
@@ -272,11 +272,11 @@ export default function DroneReconstruction({ lang }: DroneReconstructionProps) 
             onChange={(e) => setShowOverlays(e.target.checked)}
             className="w-4 h-4 rounded-md accent-brand-gold cursor-pointer"
           />
-          <span className="text-slate-400 font-medium">Show Site Boundary Hotspots & Labels Overlay</span>
+          <span className="text-slate-700 font-semibold">Show Site Boundary Hotspots & Labels Overlay</span>
         </label>
 
         <div className="flex items-center gap-4 text-slate-500 font-mono text-[9px] uppercase tracking-wider">
-          <span className="flex items-center gap-1 text-emerald-400">
+          <span className="flex items-center gap-1 text-emerald-600 font-bold">
             <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-ping" />
             LIDAR RECONSTRUCTION CALIBRATED
           </span>
