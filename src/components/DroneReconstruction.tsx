@@ -19,8 +19,8 @@ export default function DroneReconstruction({ lang }: DroneReconstructionProps) 
   const [showOverlays, setShowOverlays] = useState(true);
   
   // Custom Video Integration State (Initialized with user's specific drone flight URL)
-  const [videoInput, setVideoInput] = useState<string>('https://www.youtube.com/watch?v=rXWnRLx6Bs8');
-  const [activeVideoUrl, setActiveVideoUrl] = useState<string>('https://www.youtube.com/embed/rXWnRLx6Bs8?autoplay=1&mute=1&loop=1&playlist=rXWnRLx6Bs8&controls=1&showinfo=0&rel=0&iv_load_policy=3');
+  const [videoInput, setVideoInput] = useState<string>('https://youtu.be/B8AlofIscqQ');
+  const [activeVideoUrl, setActiveVideoUrl] = useState<string>('https://www.youtube.com/embed/B8AlofIscqQ?autoplay=1&mute=1&loop=1&playlist=B8AlofIscqQ&controls=1&showinfo=0&rel=0&iv_load_policy=3');
   const [videoType, setVideoType] = useState<'simulated' | 'youtube' | 'vimeo' | 'mp4'>('youtube');
 
   // LiDAR Interactive 3D Rotation State
@@ -242,7 +242,7 @@ export default function DroneReconstruction({ lang }: DroneReconstructionProps) 
                 ) : (
                   <iframe 
                     src={activeVideoUrl}
-                    className="w-full h-full pointer-events-none"
+                    className="w-full h-full pointer-events-auto"
                     title="Drone flight video"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -726,56 +726,6 @@ export default function DroneReconstruction({ lang }: DroneReconstructionProps) 
         </div>
       </div>
 
-      {/* 🎥 NEW PORTAL: CUSTOM VIDEO CONSOLE INTEGRATION FOR THE USER */}
-      <div className="bg-slate-950 text-slate-400 p-5 border-t border-slate-800 font-mono text-xs text-left">
-        <div className="flex items-center gap-2 text-white font-bold mb-2">
-          <Video className="w-4 h-4 text-brand-gold" />
-          <span>{lang === 'tr' ? 'Canlı Drone Videosu & Portal Entegrasyonu' : 'Live Drone Video & Portal Integration'}</span>
-        </div>
-        <p className="text-[11px] mb-4 text-slate-400 leading-relaxed max-w-2xl">
-          {lang === 'tr' 
-            ? 'Orjinal bir drone uçuş videosu bağlantısı eklemek ister misiniz? Aşağıdaki alana herhangi bir YouTube, Vimeo veya doğrudan .mp4 video bağlantısı yapıştırın. Sistemimiz videonuzu otomatik olarak yükleyecek ve üzerine uçağın gerçek zamanlı telemetri HUD verilerini (GPS, İrtifa, Koordinatörler) giydirecektir!'
-            : 'Would you like to load a custom drone flight video? Paste any YouTube, Vimeo, or direct .mp4 link in the portal below. Our advanced HUD console will render your live video directly with high-tech real-time telemetry overlays (Altitudes, Compass grids, and GPS locations)!'}
-        </p>
-        
-        <div className="flex flex-col sm:flex-row gap-2 max-w-3xl">
-          <input 
-            type="text" 
-            value={videoInput}
-            onChange={(e) => setVideoInput(e.target.value)}
-            placeholder={lang === 'tr' ? 'https://www.youtube.com/watch?v=... (veya Vimeo / MP4)' : 'https://www.youtube.com/watch?v=... (or Vimeo / MP4)'}
-            className="flex-1 px-3.5 py-2.5 rounded-lg bg-slate-900 border border-slate-800 text-white outline-none focus:border-brand-gold transition-all text-xs"
-          />
-          <div className="flex gap-1.5">
-            <button 
-              onClick={handleLoadCustomVideo}
-              className="px-5 py-2.5 bg-brand-blue hover:bg-brand-blue/90 text-white font-bold rounded-lg cursor-pointer transition-colors text-xs whitespace-nowrap self-stretch flex items-center justify-center gap-1.5 shadow"
-            >
-              <Check className="w-3.5 h-3.5" />
-              {lang === 'tr' ? 'Değişimi Uygula' : 'Apply Video Source'}
-            </button>
-            {videoType !== 'simulated' && (
-              <button 
-                onClick={handleResetVideo}
-                className="px-3.5 py-2.5 bg-slate-800 hover:bg-slate-750 text-slate-200 font-bold rounded-lg cursor-pointer transition-colors text-xs"
-              >
-                {lang === 'tr' ? 'Sıfırla' : 'Reset'}
-              </button>
-            )}
-          </div>
-        </div>
-
-        {videoType !== 'simulated' && (
-          <div className="mt-3 flex items-center gap-2 text-emerald-400 font-sans text-[11px] bg-slate-900/50 p-2 rounded-lg border border-slate-850 self-start">
-            <Info className="w-3.5 h-3.5 shrink-0" />
-            <span>
-              {lang === 'tr' 
-                ? 'Bağlantı başarıyla entegre edildi. Şimdi üstteki "Saha Drone Videosu" sekmesinde kendi videonuzu HUD katmanıyla görebilirsiniz.'
-                : 'Custom video source active! You can now watch your content synced with the HUD overlay in the "Drone Flight Video" tab above.'}
-            </span>
-          </div>
-        )}
-      </div>
     </div>
   );
 }
