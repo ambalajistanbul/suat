@@ -243,7 +243,7 @@ export default function AtrSection({ lang }: AtrSectionProps) {
                   {filteredTable1.map((item, idx) => (
                     <div key={idx} className="flex justify-between items-start py-2 border-b border-slate-100 hover:bg-slate-50 px-2 rounded-lg transition-colors gap-4">
                       <span className="text-slate-600 font-semibold text-left leading-tight">{translateKey(item.key, lang)}</span>
-                      <span className="text-slate-900 font-bold text-right shrink-0">{translateValue(item.value, lang)}</span>
+                      <span className="text-slate-900 font-bold text-right ml-auto min-w-[40%] max-w-[65%] leading-tight text-[11px] sm:text-xs">{translateValue(item.value, lang)}</span>
                     </div>
                   ))}
                 </div>
@@ -266,7 +266,7 @@ export default function AtrSection({ lang }: AtrSectionProps) {
                   {filteredTable2.map((item, idx) => (
                     <div key={idx} className="flex justify-between items-start py-2 border-b border-slate-100 hover:bg-slate-50 px-2 rounded-lg transition-colors gap-4">
                       <span className="text-slate-600 font-semibold text-left leading-tight">{translateKey(item.key, lang)}</span>
-                      <span className="text-slate-900 font-bold text-right shrink-0">{translateValue(item.value, lang)}</span>
+                      <span className="text-slate-900 font-bold text-right ml-auto min-w-[40%] max-w-[65%] leading-tight text-[11px] sm:text-xs">{translateValue(item.value, lang)}</span>
                     </div>
                   ))}
                 </div>

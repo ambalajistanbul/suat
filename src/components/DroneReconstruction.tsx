@@ -182,7 +182,7 @@ export default function DroneReconstruction({ lang }: DroneReconstructionProps) 
         </div>
       </div>
 
-      <div className="relative aspect-video bg-neutral-950 flex items-center justify-center overflow-hidden">
+      <div className="relative w-full h-[540px] sm:h-auto sm:aspect-video bg-neutral-950 flex items-center justify-center overflow-hidden">
         
         {/* VIEW 1: Drone Aerial Render with Embedded Video Player support */}
         {activeTab === 'drone' && (
