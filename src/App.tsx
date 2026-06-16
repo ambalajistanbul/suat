@@ -58,17 +58,17 @@ export default function App() {
             </div>
             <div>
               <span className="font-extrabold text-sm sm:text-lg text-slate-900 tracking-tight font-sans block">Cârligele BESS</span>
-              <span className="text-[10px] text-brand-gold font-mono font-bold uppercase tracking-wider hidden sm:block">
+              <span className="text-[10px] text-brand-gold font-mono font-bold uppercase tracking-wider hidden lg:block">
                 {lang === 'tr' ? '€21M Onaylı Şebeke Bağlantısı' : lang === 'ro' ? 'Racord la Rețea Aprobat de €21M' : lang === 'ru' ? 'Одобренное техприсоединение на €21 млн' : '€21M Approved Grid Connection'}
               </span>
-              <span className="text-[9px] text-brand-gold font-mono font-bold uppercase tracking-wider block sm:hidden">
+              <span className="text-[9px] text-brand-gold font-mono font-bold uppercase tracking-wider block lg:hidden">
                 {lang === 'tr' ? '€21M ATR' : lang === 'ro' ? '€21M ATR' : lang === 'ru' ? '€21M TCO' : '€21M ATR'}
               </span>
             </div>
           </div>
 
-          {/* Nav menu links desktop */}
-          <nav className="hidden lg:flex items-center gap-6 text-xs font-semibold text-slate-600 font-mono">
+          {/* Nav menu links desktop - using xl breakpoint and compact sizes to prevent container stretching */}
+          <nav className="hidden xl:flex items-center gap-4 xl:gap-6 text-[11px] xl:text-xs font-semibold text-slate-600 font-mono shrink-0">
             <a href="#overview" className="hover:text-slate-900 transition-colors">{t.navOverview}</a>
             <a href="#deck" className="hover:text-slate-900 transition-colors">{t.navDeck}</a>
             <a href="#atr" className="hover:text-slate-900 transition-colors">{t.navSpecs}</a>

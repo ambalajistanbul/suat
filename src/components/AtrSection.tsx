@@ -197,32 +197,32 @@ export default function AtrSection({ lang }: AtrSectionProps) {
           {/* Official summary card details */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="border border-slate-200 bg-slate-50/50 p-4 rounded-2xl flex items-center gap-3">
-              <span className="p-3 bg-brand-blue/10 text-brand-blue rounded-xl">
+              <span className="p-3 bg-brand-blue/10 text-brand-blue rounded-xl flex-shrink-0">
                 <Building className="w-5 h-5 text-indigo-600" />
               </span>
-              <div>
+              <div className="min-w-0 flex-1">
                 <span className="text-[9px] uppercase tracking-wider text-slate-500 font-mono block font-bold">{t.atrApplicant}</span>
-                <span className="text-xs font-bold text-slate-900 block truncate">{atrDoc.applicant}</span>
+                <span className="text-xs font-bold text-slate-900 block break-words whitespace-normal leading-tight">{atrDoc.applicant}</span>
               </div>
             </div>
 
             <div className="border border-slate-200 bg-slate-50/50 p-4 rounded-2xl flex items-center gap-3">
-              <span className="p-3 bg-emerald-100 text-emerald-800 rounded-xl">
+              <span className="p-3 bg-emerald-100 text-emerald-800 rounded-xl flex-shrink-0">
                 <Calendar className="w-5 h-5 text-emerald-700" />
               </span>
-              <div>
+              <div className="min-w-0 flex-1">
                 <span className="text-[9px] uppercase tracking-wider text-slate-500 font-mono block font-bold">{t.atrIssueDate}</span>
-                <span className="text-xs font-bold text-slate-900 block">{atrDoc.regDate}</span>
+                <span className="text-xs font-bold text-slate-900 block break-words whitespace-normal leading-tight">{atrDoc.regDate}</span>
               </div>
             </div>
 
             <div className="border border-slate-200 bg-slate-50/50 p-4 rounded-2xl flex items-center gap-3">
-              <span className="p-3 bg-brand-blue/10 text-brand-gold rounded-xl">
+              <span className="p-3 bg-brand-blue/10 text-brand-gold rounded-xl flex-shrink-0">
                 <Info className="w-5 h-5 text-brand-gold" />
               </span>
-              <div>
+              <div className="min-w-0 flex-1">
                 <span className="text-[9px] uppercase tracking-wider text-slate-500 font-mono block font-bold">{t.atrDossierSize}</span>
-                <span className="text-xs font-bold text-slate-900 block">{atrDoc.pages} {t.atrPagesLabel}</span>
+                <span className="text-xs font-bold text-slate-900 block break-words whitespace-normal leading-tight">{atrDoc.pages} {t.atrPagesLabel}</span>
               </div>
             </div>
           </div>
