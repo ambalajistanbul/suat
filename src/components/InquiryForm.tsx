@@ -26,16 +26,56 @@ export default function InquiryForm({ lang }: InquiryFormProps) {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const t = TRANSLATIONS[lang];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate API request to backend or proxy
-    setTimeout(() => {
+    setErrorMessage('');
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          access_key: "1064e82b-91cd-4e9e-b88c-e4e40c02dcb4",
+          from_name: "Cârligele BESS Portfolio",
+          subject: `Yeni Ciddi Alıcı Talebi - ${formData.company} (${formData.name})`,
+          name: formData.name,
+          company: formData.company,
+          email: formData.email,
+          phone: formData.phone,
+          role: formData.role,
+          inquiry_type: formData.inquiryType,
+          message: formData.message,
+          nda_requested: formData.requestNda ? "Yes (Evet)" : "No (Hayır)"
+        })
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setIsSubmitted(true);
+      } else {
+        setErrorMessage(
+          lang === 'tr' 
+            ? 'Gönderim başarısız oldu: ' + (result.message || 'Lütfen girilen bilgileri kontrol edin.') 
+            : 'Submission failed: ' + (result.message || 'Please check your form parameters.')
+        );
+      }
+    } catch (err: any) {
+      console.error(err);
+      setErrorMessage(
+        lang === 'tr' 
+          ? 'Sunucuyla bağlantı kurulamadı. İnternet bağlantınızı kontrol edip tekrar deneyin.' 
+          : 'Failed to connect to server. Please check your network connection.'
+      );
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 1200);
+    }
   };
 
   const handleDownloadStubNda = () => {
@@ -178,7 +218,14 @@ ISSUED: June 2026`;
               </label>
             </div>
 
+            {errorMessage && (
+              <div id="form-error-msg" className="p-3 bg-red-50 border border-red-200 text-red-600 rounded-xl text-xs font-bold leading-normal">
+                {errorMessage}
+              </div>
+            )}
+
             <motion.button 
+              id="submit-inquiry-btn"
               whileHover={{ scale: 1.01 }}
               whileTap={{ scale: 0.99 }}
               type="submit"
