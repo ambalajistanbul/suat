@@ -20,7 +20,9 @@ import {
   Grid,
   Map,
   FileSpreadsheet,
-  AlertCircle
+  AlertCircle,
+  Menu,
+  X
 } from 'lucide-react';
 
 import { Language } from './types';
@@ -33,6 +35,7 @@ import AtrSection from './components/AtrSection';
 
 export default function App() {
   const [lang, setLang] = useState<Language>('tr');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const t = TRANSLATIONS[lang];
 
   // Quick stats computed or defined
@@ -76,22 +79,85 @@ export default function App() {
             <a href="#timeline" className="hover:text-slate-900 transition-colors">{t.navTimeline}</a>
           </nav>
 
-          {/* Selector language tab switch */}
-          <div className="flex bg-slate-100 p-0.5 sm:p-1 rounded-xl self-center border border-slate-200/80 font-mono text-[9px] sm:text-xs shrink-0 gap-0.5 sm:gap-1">
-            {(['tr', 'en', 'ro', 'ru'] as Language[]).map((el) => (
-              <button
-                key={el}
-                onClick={() => handleLanguageChange(el)}
-                className={`px-1.5 sm:px-3 py-1 sm:py-1.5 rounded-lg font-bold transition-all text-center cursor-pointer ${
-                  lang === el ? 'bg-brand-blue text-white shadow-md font-black' : 'text-slate-600 hover:text-slate-900'
-                }`}
-                aria-label={`Switch language to ${el.toUpperCase()}`}
-              >
-                {el.toUpperCase()}
-              </button>
-            ))}
+          <div className="flex items-center gap-1.5 sm:gap-3">
+            {/* Selector language tab switch */}
+            <div className="flex bg-slate-100 p-0.5 sm:p-1 rounded-xl self-center border border-slate-200/80 font-mono text-[9px] sm:text-xs shrink-0 gap-0.5 sm:gap-1">
+              {(['tr', 'en', 'ro', 'ru'] as Language[]).map((el) => (
+                <button
+                  key={el}
+                  onClick={() => handleLanguageChange(el)}
+                  className={`px-1.5 sm:px-2.5 py-1 sm:py-1.5 rounded-lg font-bold transition-all text-center cursor-pointer ${
+                    lang === el ? 'bg-brand-blue text-white shadow-md font-black' : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                  aria-label={`Switch language to ${el.toUpperCase()}`}
+                >
+                  {el.toUpperCase()}
+                </button>
+              ))}
+            </div>
+
+            {/* Mobile Menu Open Toggle Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="xl:hidden p-1.5 sm:p-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 transition-all cursor-pointer flex items-center justify-center shrink-0"
+              aria-label="Toggle navigation menu"
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
           </div>
         </div>
+
+        {/* Dynamic sliding responsive dropdown mobile panel */}
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            className="xl:hidden border-t border-slate-200/80 bg-white/95 backdrop-blur-md shadow-lg"
+          >
+            <nav className="flex flex-col p-4 gap-1.5 font-mono text-xs font-semibold text-slate-700">
+              <a 
+                href="#overview" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="hover:text-slate-950 p-2.5 hover:bg-slate-50 rounded-xl transition-colors flex items-center gap-2.5"
+              >
+                <div className="w-1.5 h-1.5 rounded-full bg-brand-blue"></div>
+                {t.navOverview}
+              </a>
+              <a 
+                href="#deck" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="hover:text-slate-950 p-2.5 hover:bg-slate-50 rounded-xl transition-colors flex items-center gap-2.5"
+              >
+                <div className="w-1.5 h-1.5 rounded-full bg-indigo-500"></div>
+                {t.navDeck}
+              </a>
+              <a 
+                href="#atr" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="hover:text-slate-950 p-2.5 hover:bg-slate-50 rounded-xl transition-colors flex items-center gap-2.5"
+              >
+                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+                {t.navSpecs}
+              </a>
+              <a 
+                href="#calculator" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="hover:text-slate-950 p-2.5 hover:bg-slate-50 rounded-xl transition-colors flex items-center gap-2.5"
+              >
+                <div className="w-1.5 h-1.5 rounded-full bg-amber-500"></div>
+                {t.navCalculator}
+              </a>
+              <a 
+                href="#timeline" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="hover:text-slate-950 p-2.5 hover:bg-slate-50 rounded-xl transition-colors flex items-center gap-2.5"
+              >
+                <div className="w-1.5 h-1.5 rounded-full bg-pink-500"></div>
+                {t.navTimeline}
+              </a>
+            </nav>
+          </motion.div>
+        )}
       </header>
 
       {/* Hero Section */}
