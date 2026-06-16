@@ -55,12 +55,12 @@ export default function App() {
       {/* Dynamic Navigation Fixed Bar */}
       <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-1 sm:gap-4">
-          <div className="flex items-center gap-2 sm:gap-3">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-brand-blue flex items-center justify-center text-white shadow-lg shadow-indigo-500/20 shrink-0">
+          <a href="/" className="flex items-center gap-2 sm:gap-3 cursor-pointer group hover:opacity-95 transition-opacity">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-brand-blue flex items-center justify-center text-white shadow-lg shadow-indigo-500/20 shrink-0 group-hover:scale-105 transition-transform">
               <span className="font-extrabold font-sans text-sm sm:text-lg tracking-tight">C</span>
             </div>
             <div>
-              <span className="font-extrabold text-sm sm:text-lg text-slate-900 tracking-tight font-sans block">Cârligele BESS</span>
+              <span className="font-extrabold text-sm sm:text-lg text-slate-900 tracking-tight font-sans block group-hover:text-brand-blue transition-colors">Cârligele BESS</span>
               <span className="text-[10px] text-brand-gold font-mono font-bold uppercase tracking-wider hidden lg:block">
                 {lang === 'tr' ? '€21M Onaylı Şebeke Bağlantısı' : lang === 'ro' ? 'Racord la Rețea Aprobat de €21M' : lang === 'ru' ? 'Одобренное техприсоединение на €21 млн' : '€21M Approved Grid Connection'}
               </span>
@@ -68,7 +68,7 @@ export default function App() {
                 {lang === 'tr' ? '€21M ATR' : lang === 'ro' ? '€21M ATR' : lang === 'ru' ? '€21M TCO' : '€21M ATR'}
               </span>
             </div>
-          </div>
+          </a>
 
           {/* Nav menu links desktop - using xl breakpoint and compact sizes to prevent container stretching */}
           <nav className="hidden xl:flex items-center gap-4 xl:gap-6 text-[11px] xl:text-xs font-semibold text-slate-600 font-mono shrink-0">
