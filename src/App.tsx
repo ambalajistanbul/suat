@@ -5,6 +5,7 @@
 
 import { useState } from 'react';
 import { motion } from 'motion/react';
+import { Analytics } from '@vercel/analytics/react';
 import { 
   Sparkles, 
   MapPin, 
@@ -371,6 +372,7 @@ export default function App() {
           </div>
         </div>
       </footer>
+      <Analytics />
     </div>
   );
 }
